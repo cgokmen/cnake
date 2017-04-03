@@ -1,0 +1,10 @@
+void setPixel(u16 *buffer, int row, int col, u16 color);
+void drawRect(u16 *buffer, int row, int col, int width, int height, volatile u16);
+void drawRect3(u16 *buffer, int row, int col, int width, int height, volatile u16);
+void drawFullWidthRectangle(u16 *buffer, int row, int height, u16 color);
+void fillScreen3(u16 *buffer, volatile u16 color);
+void drawImage3 (u16 *buffer, int r, int c, int width, int height, u16 *image);
+void drawFullScreenImage(u16 *buffer, u16 *image);
+void drawChar(u16 *buffer, int row, int col, char ch, u16 color);
+void drawString(u16 *buffer, int row, int col, char *str, u16 color);
+extern const unsigned char fontdata_6x8[12288];
