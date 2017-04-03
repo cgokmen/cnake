@@ -64,6 +64,7 @@ void processGame(Game *g, u32 keysPressed) {
     s->dead = checkSelfCollision(*s) || checkWallCollision(*s);
 
     // Eat any food if necessary
+    // TODO: why is food not being eaten?
     for (u16 i = 0; i < g->numFoods; i++) {
         Food *f = &(g->foods[i]);
         if (checkFoodCollision(*s, *f)) {
@@ -72,9 +73,11 @@ void processGame(Game *g, u32 keysPressed) {
     }
 
     // Generate any new foods if we must
-    /*while (g->numFoods < FOODCOUNT(g->score)) {
-        g->foods[g->numFoods++] = createRandomFood(g);
-    }*/
+    unsigned short numFoods = g->numFoods;
+    while (numFoods < FOODCOUNT(g->score)) {
+        g->foods[numFoods++] = createRandomFood(g);
+    }
+    g->numFoods = numFoods;
 
 	keysPressed |= ~(BUTTONS);
 
@@ -209,13 +212,16 @@ Food createRandomFood(Game *g) {
 
 	Point p;
 
-	do {
+	/*do {
 		p.x = rand() % (TWOPOWGEQWIDTH - 1);
 	} while (p.x >= (SNAKE_BOARD_WIDTH * 9) / 10 || p.y <= SNAKE_BOARD_WIDTH / 10);
 
 	do {
 		p.y = rand() % (TWOPOWGEQHEIGHT - 1);
-	} while (p.y >= (SNAKE_BOARD_HEIGHT * 9) / 10 || p.y <= SNAKE_BOARD_HEIGHT / 10);
+	} while (p.y >= (SNAKE_BOARD_HEIGHT * 9) / 10 || p.y <= SNAKE_BOARD_HEIGHT / 10);*/
+
+    p.x = qran_range((SNAKE_BOARD_WIDTH * 9) / 10, SNAKE_BOARD_WIDTH / 10);
+    p.y = qran_range((SNAKE_BOARD_HEIGHT * 9) / 10, SNAKE_BOARD_HEIGHT / 10);
 
 	f.location = p;
 

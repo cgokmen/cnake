@@ -18,6 +18,7 @@ void drawGameLineBetween(u16 *buffer, int x1, int y1, int x2, int y2, u8 color) 
 }
 
 void drawGame(u16 *buffer, Game *g) {
+	// TODO: We need this to check for key input at various points.
 	fillScreen4(buffer, 0);
 	drawWalls(buffer);
 	drawScore(buffer, *g);

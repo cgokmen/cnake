@@ -58,6 +58,7 @@ typedef struct
 void delay(int n);
 u32 keySensitiveDelay(int n);
 void waitForVBlank();
+int qran_range(int min, int max);
 
 #include "gbaGraphics.h"
 #include "cnakeSettings.h"
