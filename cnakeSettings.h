@@ -1,13 +1,12 @@
 #define SNAKE_BOARD_WIDTH 120
 #define SNAKE_BOARD_HEIGHT 70
-#define DRAW_SCALE 2
+#define DRAW_SCALE 2 // Make sure this number is even (bc no word access)
 
 // These are used for random number generation
 #define TWOPOWGEQWIDTH 128 // Smallest power of two greater than or equal to the Board Width
 #define TWOPOWGEQHEIGHT 128 // Smallest power of two greater than or equal to the Board Height
 
 #define SCORE_BOX_Y SNAKE_BOARD_HEIGHT * DRAW_SCALE
-#define SCORE_COLOR YELLOW
 
 #define GAME_OVER_DURATION 50
 #define GAME_FRAME_DELAY 50
@@ -26,3 +25,5 @@
 #define WALL_COLOR RED
 #define SNAKE_COLOR GREEN
 #define FOOD_COLOR WHITE
+#define SCORE_COLOR YELLOW
+#define SCORE_BACKGROUND_COLOR GRAY

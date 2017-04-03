@@ -25,14 +25,15 @@ int main() {
     u32 highScore = 0;
 	u32 score = 0;
 
-	u16 tempBuffer[38400];
-	//u16* tempBuffer = calloc(240*160, sizeof(short));
+	u16 *currentBuffer;
 
 	while(1) {
 		switch(state) {
 		case START:
 			waitForVBlank();
-			drawFullScreenImage(videoBuffer, (u16*) splash);
+			drawFullScreenImage3(videoBuffer, (u16*) splash);
+			REG_DISPCNT = MODE_3 | BG2_EN;
+
 			state = START_NODRAW;
 			break;
 		case START_NODRAW:
@@ -44,8 +45,10 @@ int main() {
 			break;
         case GAME_INIT:
 			waitForVBlank();
-			fillScreen3(videoBuffer, BACKGROUND_COLOR);
-			//fillScreen3(tempBuffer, BACKGROUND_COLOR);
+			fillPalette();
+			currentBuffer = flipPage();
+			fillScreen4(currentBuffer, BACKGROUND_COLOR);
+			REG_DISPCNT = MODE_4 | BG2_EN;
 
             g = createGame();
 
@@ -62,18 +65,19 @@ int main() {
                 processGame(&g, keySensitiveDelay(GAME_FRAME_DELAY));
 
 				// We draw the game onto a temporary buffer first
-				drawGame(tempBuffer, &g);
+				drawGame(currentBuffer, &g);
 
 				// We then wait for the VBlank and draw this buffer "image"
 				// onto the screen.
 				waitForVBlank();
-				drawFullScreenImage(videoBuffer, tempBuffer);
+				currentBuffer = flipPage();
             }
 
 			break;
         case GAMEOVER:
 			waitForVBlank();
 			fillScreen3(videoBuffer, BLACK);
+			REG_DISPCNT = MODE_3 | BG2_EN;
 
 			char scoreText[100];
 			char highScoreText[100];
@@ -81,16 +85,16 @@ int main() {
 			sprintf(scoreText, "Your score: %d", score);
 			sprintf(highScoreText, "Your high score: %d", highScore);
 
-			drawString(videoBuffer, 10, 10, "Game Over :(", RED);
-			drawString(videoBuffer, 10, 30, scoreText, WHITE);
-			drawString(videoBuffer, 10, 40, highScoreText, WHITE);
-			drawString(videoBuffer, 10, 60, "Press A to retry", WHITE);
+			drawString3(videoBuffer, 10, 10, "Game Over :(", RED);
+			drawString3(videoBuffer, 10, 30, scoreText, WHITE);
+			drawString3(videoBuffer, 10, 40, highScoreText, WHITE);
+			drawString3(videoBuffer, 10, 60, "Press A to retry", WHITE);
 
-			drawString(videoBuffer, 10, 80, "Credits:", GREEN);
-			drawString(videoBuffer, 10, 100, "cnake was developed for GT CS2110", WHITE);
-			drawString(videoBuffer, 10, 110, "by Cem Gokmen <cgokmen@gatech.edu>", WHITE);
-			drawString(videoBuffer, 10, 120, "(http://github.com/skyman/cnake)", WHITE);
-			drawString(videoBuffer, 10, 140, "2017, All Rights Reserved.", WHITE);
+			drawString3(videoBuffer, 10, 80, "Credits:", GREEN);
+			drawString3(videoBuffer, 10, 100, "cnake was developed for GT CS2110", WHITE);
+			drawString3(videoBuffer, 10, 110, "by Cem Gokmen <cgokmen@gatech.edu>", WHITE);
+			drawString3(videoBuffer, 10, 120, "(http://github.com/skyman/cnake)", WHITE);
+			drawString3(videoBuffer, 10, 140, "2017, All Rights Reserved.", WHITE);
 
 			state = GAMEOVER_NODRAW;
 			break;

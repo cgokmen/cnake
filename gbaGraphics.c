@@ -2,51 +2,45 @@
 
 u16 *videoBuffer = (u16 *)0x6000000;
 
-void setPixel(u16 *buffer, int row, int col, u16 color) {
-	buffer[OFFSET(row, col, 240)] = color;
+void setPixel3(u16 *buffer, int x, int y, u16 color) {
+    buffer[OFFSET(y, x, 240)] = color;
 }
 
-void drawRect(u16 *buffer, int col, int row, int width, int height, volatile u16 color) {
+void setPixel4(u16 *buffer, int x, int y, u8 color) {
+    u16 *dst= &buffer[OFFSET(y, x, 240)/2];  // Division by 2 due to u8/u16 pointer mismatch!
+    if(x&1)
+        *dst= (*dst& 0xFF) | (color<<8);    // odd pixel
+    else
+        *dst= (*dst&~0xFF) |  color;        // even pixel
+}
+
+void drawRect4(u16 *buffer, int col, int row, int width, int height, volatile u8 color) {
 	for(int r = 0; r<height; r++) {
 		for(int c = 0; c < width; c++) {
-			*(buffer + OFFSET(row+r, col+c, 240)) = color;
+			setPixel4(buffer, row + r, col + c, color);
 		}
 	}
 }
 
-void drawRect3(u16 *buffer, int col, int row, int width, int height, volatile u16 color) {
-	for(int r = 0; r<height; r++) {
+void drawRect4DMA(u16 *buffer, int col, int row, int width, int height, volatile u8 color) {
+    u16 clr = color + (((u16) color) << 8);
+    for(int r = 0; r<height; r++) {
 		DMA[3].cnt = 0;
-		DMA[3].src = &color;
-		DMA[3].dst = buffer + OFFSET(row+r, col, 240);
-		DMA[3].cnt = width | DMA_SOURCE_FIXED | DMA_ON;
+		DMA[3].src = &clr;
+		DMA[3].dst = buffer + OFFSET(row+r, col, 240) / 2;
+		DMA[3].cnt = (width / 2) | DMA_SOURCE_FIXED | DMA_ON;
 	}
 }
 
-void drawFullWidthRectangle(u16 *buffer, int row, int height, u16 color) {
+void drawFullWidthRectangle4(u16 *buffer, int row, int height, u8 color) {
+    u16 clr = color + (((u16) color) << 8);
 	DMA[3].cnt = 0;
-	DMA[3].src = &color;
-	DMA[3].dst = buffer + OFFSET(row, 0, 240);
-	DMA[3].cnt = 240 * height | DMA_SOURCE_FIXED | DMA_ON;
+	DMA[3].src = &clr;
+	DMA[3].dst = buffer + OFFSET(row, 0, 240) / 2;
+	DMA[3].cnt = 120 * height | DMA_SOURCE_FIXED | DMA_ON;
 }
 
-void drawGameDot(u16 *buffer, int x, int y, u16 color) {
-	drawRect(buffer, x * DRAW_SCALE, y * DRAW_SCALE, DRAW_SCALE, DRAW_SCALE, color);
-}
-
-void drawGameLineBetween(u16 *buffer, int x1, int y1, int x2, int y2, u16 color) {
-	int minX = (x1 < x2) ? x1 : x2;
-	int maxX = (x1 < x2) ? x2 : x1;
-	int width = maxX - minX + 1;
-
-	int minY = (y1 < y2) ? y1 : y2;
-	int maxY = (y1 < y2) ? y2 : y1;
-	int height = maxY - minY + 1;
-
-	drawRect3(buffer, minX * DRAW_SCALE, minY * DRAW_SCALE, width * DRAW_SCALE, height * DRAW_SCALE, color);
-}
-
-void drawFullScreenImage(u16 *buffer, u16 *image) {
+void drawFullScreenImage3(u16 *buffer, u16 *image) {
 	DMA[3].cnt = 0;
     DMA[3].src = image;
     DMA[3].dst = buffer;
@@ -60,7 +54,15 @@ void fillScreen3(u16 *buffer, volatile u16 color) {
     DMA[3].cnt = 240*160 | DMA_SOURCE_FIXED | DMA_ON;
 }
 
-void drawImage3 (u16 *buffer, int row, int col, int width, int height, u16 *image) {
+void fillScreen4(u16 *buffer, volatile u8 color) {
+    u16 clr = color + (((u16) color) << 8);
+	DMA[3].cnt = 0;
+    DMA[3].src = &clr;
+    DMA[3].dst = buffer;
+    DMA[3].cnt = 240*160 / 2 | DMA_SOURCE_FIXED | DMA_ON;
+}
+
+void drawImage3(u16 *buffer, int row, int col, int width, int height, u16 *image) {
     for(int r = 0; r<height; r++) {
 		DMA[3].src = image + OFFSET(row+r, col, width);
 		DMA[3].dst = buffer + OFFSET(row+r, col, 240);
@@ -68,19 +70,56 @@ void drawImage3 (u16 *buffer, int row, int col, int width, int height, u16 *imag
 	}
 }
 
-void drawChar(u16 *buffer, int col, int row, char ch, u16 color) {
+void drawChar3(u16 *buffer, int col, int row, char ch, u16 color) {
 	for(int r = 0; r<8; r++) {
 		for(int c=0; c<6; c++) {
 			if(fontdata_6x8[OFFSET(r, c, 6) + ch*48]) {
-				setPixel(buffer, row+r, col+c, color);
+				setPixel3(buffer, col+c, row+r, color);
 			}
 		}
 	}
 }
 
-void drawString(u16 *buffer, int col, int row, char *str, u16 color) {
+void drawString3(u16 *buffer, int col, int row, char *str, u16 color) {
 	while(*str) {
-		drawChar(buffer, col, row, *str++, color);
+		drawChar3(buffer, col, row, *str++, color);
 		col += 6;
 	}
+}
+
+void drawChar4(u16 *buffer, int col, int row, char ch, u8 color) {
+	for(int r = 0; r<8; r++) {
+		for(int c=0; c<6; c++) {
+			if(fontdata_6x8[OFFSET(r, c, 6) + ch*48]) {
+				setPixel4(buffer, col+c, row+r, color);
+			}
+		}
+	}
+}
+
+void drawString4(u16 *buffer, int col, int row, char *str, u8 color) {
+	while(*str) {
+		drawChar4(buffer, col, row, *str++, color);
+		col += 6;
+	}
+}
+
+u16* flipPage() {
+  if(REG_DISPCNT & BUFFER1FLAG) {
+    REG_DISPCNT &= ~BUFFER1FLAG;
+    return BUFFER1;
+  } else {
+    REG_DISPCNT |= BUFFER1FLAG;
+    return BUFFER0;
+  }
+}
+
+void fillPalette() {
+  // We just need the background, snake, wall, food, score and scorebg colors.
+  PALETTE[0] = BACKGROUND_COLOR;
+  PALETTE[1] = WALL_COLOR;
+  PALETTE[2] = SNAKE_COLOR;
+  PALETTE[3] = FOOD_COLOR;
+  PALETTE[4] = SCORE_COLOR;
+  PALETTE[5] = SCORE_BACKGROUND_COLOR;
 }

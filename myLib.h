@@ -2,24 +2,6 @@ typedef unsigned int u32;
 typedef unsigned short u16;
 typedef unsigned char u8;
 
-#define REG_DISPCNT *(u16 *)0x4000000
-#define MODE_3 3
-#define MODE_4 4
-#define BG2_EN (1 << 10)
-#define OFFSET(r, c, rowlen) ((c) + (r)*(rowlen))
-#define COLOR(r, g, b) ((r) | (g)<<5 | (b)<<10)
-#define WHITE COLOR(31,31,31)
-#define RED COLOR(31,0,0)
-#define GREEN COLOR(0,31,0)
-#define BLUE COLOR(0,0,31)
-#define MAGENTA COLOR(31, 0, 31)
-#define CYAN COLOR(0, 31, 31)
-#define YELLOW COLOR(31, 31, 0)
-#define BLACK 0
-#define GRAY COLOR(5, 5, 5)
-
-#define SCANLINECOUNTER *(volatile u16 *)0x4000006
-
 extern u16 *videoBuffer;
 
 // Buttons

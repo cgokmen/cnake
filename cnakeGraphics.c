@@ -1,8 +1,24 @@
 #include "myLib.h"
 #include <stdio.h>
 
+void drawGameDot(u16 *buffer, int x, int y, u8 color) {
+	drawRect4(buffer, x * DRAW_SCALE, y * DRAW_SCALE, DRAW_SCALE, DRAW_SCALE, color);
+}
+
+void drawGameLineBetween(u16 *buffer, int x1, int y1, int x2, int y2, u8 color) {
+	int minX = (x1 < x2) ? x1 : x2;
+	int maxX = (x1 < x2) ? x2 : x1;
+	int width = maxX - minX + 1;
+
+	int minY = (y1 < y2) ? y1 : y2;
+	int maxY = (y1 < y2) ? y2 : y1;
+	int height = maxY - minY + 1;
+
+	drawRect4DMA(buffer, minX * DRAW_SCALE, minY * DRAW_SCALE, width * DRAW_SCALE, height * DRAW_SCALE, color);
+}
+
 void drawGame(u16 *buffer, Game *g) {
-	//fillScreen3(buffer, BACKGROUND_COLOR);
+	fillScreen4(buffer, 0);
 	drawWalls(buffer);
 	drawScore(buffer, *g);
 	drawSnake(buffer, g->snake);
@@ -16,16 +32,16 @@ void drawScore(u16 *buffer, Game g) {
 	char scoreText[50];
 	sprintf(scoreText, "Score: %d", g.score);
 
-	drawFullWidthRectangle(buffer, SCORE_BOX_Y, 160 - SCORE_BOX_Y, GRAY);
-	drawString(buffer, 24, SCORE_BOX_Y + 6, scoreText, SCORE_COLOR);
-	drawString(buffer, 170, SCORE_BOX_Y + 6, "cnake v1.0", SCORE_COLOR);
+	drawFullWidthRectangle4(buffer, SCORE_BOX_Y, 160 - SCORE_BOX_Y, 5);
+	drawString4(buffer, 10, SCORE_BOX_Y + 6, scoreText, 4);
+	drawString4(buffer, 170, SCORE_BOX_Y + 6, "cnake v1.0", 4);
 }
 
 void drawWalls(u16 *buffer) {
-    drawGameLineBetween(buffer, 0, 0, 0, SNAKE_BOARD_HEIGHT - 1, WALL_COLOR); // Left vertical
-	drawGameLineBetween(buffer, SNAKE_BOARD_WIDTH - 1, 0, SNAKE_BOARD_WIDTH - 1, SNAKE_BOARD_HEIGHT - 1, WALL_COLOR); // Right vertical
-	drawGameLineBetween(buffer, 0, 0, SNAKE_BOARD_WIDTH - 1, 0, WALL_COLOR); // Top horizontal
-	drawGameLineBetween(buffer, 0, SNAKE_BOARD_HEIGHT - 1, SNAKE_BOARD_WIDTH - 1, SNAKE_BOARD_HEIGHT - 1, WALL_COLOR); // Bottom horizontal
+    drawGameLineBetween(buffer, 0, 0, 0, SNAKE_BOARD_HEIGHT - 1, 1); // Left vertical
+	drawGameLineBetween(buffer, SNAKE_BOARD_WIDTH - 1, 0, SNAKE_BOARD_WIDTH - 1, SNAKE_BOARD_HEIGHT - 1, 1); // Right vertical
+	drawGameLineBetween(buffer, 0, 0, SNAKE_BOARD_WIDTH - 1, 0, 1); // Top horizontal
+	drawGameLineBetween(buffer, 0, SNAKE_BOARD_HEIGHT - 1, SNAKE_BOARD_WIDTH - 1, SNAKE_BOARD_HEIGHT - 1, 1); // Bottom horizontal
 }
 
 void drawSnake(u16 *buffer, Snake s) {
@@ -47,7 +63,7 @@ void drawSnake(u16 *buffer, Snake s) {
 			turn = s.turns[turnIdx];
 			if (current.x == turn.location.x && current.y == turn.location.y) {
 				facing = getOpposite(turn.previouslyFacing);
-				drawGameLineBetween(buffer, lineFrom.x, lineFrom.y, current.x, current.y, SNAKE_COLOR);
+				drawGameLineBetween(buffer, lineFrom.x, lineFrom.y, current.x, current.y, 2);
 				lineFrom = current;
 				turnIdx++;
 			}
@@ -80,9 +96,9 @@ void drawSnake(u16 *buffer, Snake s) {
 		}
 	}
 
-	drawGameLineBetween(buffer, lineFrom.x, lineFrom.y, current.x, current.y, SNAKE_COLOR);
+	drawGameLineBetween(buffer, lineFrom.x, lineFrom.y, current.x, current.y, 2);
 }
 
 void drawFood(u16 *buffer, Food f) {
-    drawGameDot(buffer, f.location.x, f.location.y, FOOD_COLOR);
+    drawGameDot(buffer, f.location.x, f.location.y, 3);
 }
