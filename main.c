@@ -5,30 +5,38 @@
 #include <stdlib.h>
 
 // State enum definition
-enum GBAState {
+typedef enum {
 	START,
 	START_NODRAW,
     GAME_INIT,
     GAME,
     GAMEOVER,
 	GAMEOVER_NODRAW,
-};
+} GBAState;
 
 int main() {
-	REG_DISPCNT = MODE_3 | BG2_EN;
+	GBAState state = START;
 
-	enum GBAState state = START;
+    short previouslyPressedA = 0;
+	short pressedA = 0;
 
-    short previouslyPressed = 0;
-	short pressed = 0;
+	short previouslyPressedSelect = 0;
+	short pressedSelect = 0;
 
-    Game g;
+	short previouslyPressedStart = 0;
+	short pressedStart = 0;
+
+    Game *g;
     u32 highScore = 0;
 	u32 score = 0;
 
 	u16 *currentBuffer;
 
 	while(1) {
+		pressedA = KEY_DOWN_NOW(BUTTON_A);
+		pressedSelect = KEY_DOWN_NOW(BUTTON_SELECT);
+		pressedStart = KEY_DOWN_NOW(BUTTON_START);
+
 		switch(state) {
 		case START:
 			waitForVBlank();
@@ -38,8 +46,7 @@ int main() {
 			state = START_NODRAW;
 			break;
 		case START_NODRAW:
-            pressed = KEY_DOWN_NOW(BUTTON_A);
-            if (pressed && !previouslyPressed) {
+            if (pressedA && !previouslyPressedA) {
                 state = GAME_INIT;
             }
 
@@ -56,9 +63,9 @@ int main() {
 			state = GAME;
 			break;
 		case GAME:
-            if (g.snake.dead) {
+            if (g->snake->dead) {
 				// Draw the dead image
-				drawGame(currentBuffer, &g);
+				drawGame(currentBuffer, g);
 				drawImageNonBlackPixels4(currentBuffer, (u16*) deadImage);
 
 				waitForVBlank();
@@ -66,15 +73,30 @@ int main() {
 
                 delay(GAME_OVER_DURATION);
 
-				score = g.score;
+				score = g->score;
 				highScore = (score > highScore) ? score : highScore;
                 state = GAMEOVER;
+
+				// Let's get rid of the game.
+				freeGame(g);
             } else {
+				// Cancel the game if necessary
+				if (pressedSelect && !previouslyPressedSelect) {
+					freeGame(g);
+					state = START;
+					break;
+				}
+
+				// Pause / unpause the game if necessary
+				if (pressedStart && !previouslyPressedStart) {
+					togglePause(g);
+				}
+
                 // Process the state
-                processGame(&g, keySensitiveDelay(GAME_FRAME_DELAY));
+                processGame(g, keySensitiveDelay(GAME_FRAME_DELAY));
 
 				// We draw the game onto a temporary buffer first
-				drawGame(currentBuffer, &g);
+				drawGame(currentBuffer, g);
 
 				// We then wait for the VBlank and draw this buffer "image"
 				// onto the screen.
@@ -108,15 +130,16 @@ int main() {
 			state = GAMEOVER_NODRAW;
 			break;
 		case GAMEOVER_NODRAW:
-            pressed = KEY_DOWN_NOW(BUTTON_A);
-            if (pressed && !previouslyPressed) {
+            if ((pressedA && !previouslyPressedA) || (pressedSelect && !previouslyPressedSelect)) {
                 state = START;
             }
 
 			break;
 		}
 
-		previouslyPressed = pressed;
+		previouslyPressedA = pressedA;
+		previouslyPressedSelect = pressedSelect;
+		previouslyPressedStart = pressedStart;
 	}
 
 	return 0;
