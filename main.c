@@ -1,5 +1,6 @@
 #include "myLib.h"
-#include "splash.h"
+#include "splashImage.h"
+#include "deadImage.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -31,7 +32,7 @@ int main() {
 		switch(state) {
 		case START:
 			waitForVBlank();
-			drawFullScreenImage3(videoBuffer, (u16*) splash);
+			drawFullScreenImage3(videoBuffer, (u16*) splashImage);
 			REG_DISPCNT = MODE_3 | BG2_EN;
 
 			state = START_NODRAW;
@@ -56,7 +57,15 @@ int main() {
 			break;
 		case GAME:
             if (g.snake.dead) {
+				// Draw the dead image
+				drawGame(currentBuffer, &g);
+				drawImageNonBlackPixels4(currentBuffer, (u16*) deadImage);
+
+				waitForVBlank();
+				currentBuffer = flipPage();
+
                 delay(GAME_OVER_DURATION);
+
 				score = g.score;
 				highScore = (score > highScore) ? score : highScore;
                 state = GAMEOVER;

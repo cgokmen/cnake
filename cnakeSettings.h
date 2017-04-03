@@ -8,7 +8,7 @@
 
 #define SCORE_BOX_Y SNAKE_BOARD_HEIGHT * DRAW_SCALE
 
-#define GAME_OVER_DURATION 50
+#define GAME_OVER_DURATION 100
 #define GAME_FRAME_DELAY 50
 
 #define SNAKE_START_X 20
@@ -17,8 +17,8 @@
 #define SNAKE_INITIAL_FACING RIGHT
 
 #define FOOD_DURATION 200
-#define FOOD_LENGTH_INCREMENT 5
-#define FOODCOUNT(score) 1
+#define FOOD_LENGTH_INCREMENT 10
+#define FOODCOUNT(score) ((score) < 5000 ? 1 : ((score) < 10000 ? 2 : 3))
 #define SNAKESPEED(score) 1
 
 #define BACKGROUND_COLOR BLACK

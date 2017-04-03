@@ -53,6 +53,7 @@ void processGame(Game *g, u32 keysPressed) {
 	}
 
 	// If the snake needs to be grown, do that:
+    // TODO: This looks sort of stupid. Try improvements.
 	s->length += speed;
 	if (s->length > s->growToLength) s->length = s->growToLength;
 
@@ -64,7 +65,6 @@ void processGame(Game *g, u32 keysPressed) {
     s->dead = checkSelfCollision(*s) || checkWallCollision(*s);
 
     // Eat any food if necessary
-    // TODO: why is food not being eaten?
     for (u16 i = 0; i < g->numFoods; i++) {
         Food *f = &(g->foods[i]);
         if (checkFoodCollision(*s, *f)) {
@@ -73,11 +73,9 @@ void processGame(Game *g, u32 keysPressed) {
     }
 
     // Generate any new foods if we must
-    unsigned short numFoods = g->numFoods;
-    while (numFoods < FOODCOUNT(g->score)) {
-        g->foods[numFoods++] = createRandomFood(g);
+    while (g->numFoods < FOODCOUNT(g->score)) {
+        g->foods[g->numFoods++] = createRandomFood(g);
     }
-    g->numFoods = numFoods;
 
 	keysPressed |= ~(BUTTONS);
 
@@ -212,16 +210,10 @@ Food createRandomFood(Game *g) {
 
 	Point p;
 
-	/*do {
-		p.x = rand() % (TWOPOWGEQWIDTH - 1);
-	} while (p.x >= (SNAKE_BOARD_WIDTH * 9) / 10 || p.y <= SNAKE_BOARD_WIDTH / 10);
-
-	do {
-		p.y = rand() % (TWOPOWGEQHEIGHT - 1);
-	} while (p.y >= (SNAKE_BOARD_HEIGHT * 9) / 10 || p.y <= SNAKE_BOARD_HEIGHT / 10);*/
-
     p.x = qran_range((SNAKE_BOARD_WIDTH * 9) / 10, SNAKE_BOARD_WIDTH / 10);
     p.y = qran_range((SNAKE_BOARD_HEIGHT * 9) / 10, SNAKE_BOARD_HEIGHT / 10);
+
+    // TODO: Make sure food isnt in snake.
 
 	f.location = p;
 
@@ -243,7 +235,7 @@ int checkFoodCollision(Snake s, Food f) {
 	Direction facing = getOpposite(s.facing);
 	u16 remainingLength = s.length;
 
-	while (remainingLength > 0) {\
+	while (remainingLength > 0) {
 		// Check if the food is here
 		if (current.x == f.location.x && current.y == f.location.y) {
 			return 1;
@@ -280,6 +272,8 @@ int checkFoodCollision(Snake s, Food f) {
 void eatFood(Food *f, Game *g) {
     // We set the food to expire now so
     // that it will be deleted next cycle
+    g->score += (f->deleteOnCycle - g->currentCycle) * 5;
+
     f->deleteOnCycle = g->currentCycle;
 
 	Snake *s = &(g->snake);

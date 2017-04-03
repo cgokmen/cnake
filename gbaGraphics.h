@@ -27,6 +27,7 @@ void drawRect4(u16 *buffer, int row, int col, int width, int height, u8 color);
 void drawRect4DMA(u16 *buffer, int row, int col, int width, int height, u8 color);
 void drawFullWidthRectangle4(u16 *buffer, int row, int height, u8 color);
 void drawFullScreenImage3(u16 *buffer, u16 *image);
+void drawImageNonBlackPixels4(u16 *buffer, u16 *image);
 void fillScreen3(u16 *buffer, volatile u16 color);
 void fillScreen4(u16 *buffer, volatile u8 color);
 void drawImage3 (u16 *buffer, int r, int c, int width, int height, u16 *image);
