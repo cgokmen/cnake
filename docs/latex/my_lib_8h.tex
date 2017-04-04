@@ -1,0 +1,164 @@
+\hypertarget{my_lib_8h}{}\section{src/my\+Lib.h File Reference}
+\label{my_lib_8h}\index{src/my\+Lib.\+h@{src/my\+Lib.\+h}}
+
+
+This file contains generic library functions and includes the other headers.  
+
+
+{\ttfamily \#include \char`\"{}gba\+Graphics.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}cnake\+Settings.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}cnake\+Logic.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}cnake\+Graphics.\+h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries B\+U\+T\+T\+O\+N\+\_\+A}~(1$<$$<$0)\hypertarget{my_lib_8h_a9cd67f3be58dbc886c0def221160536b}{}\label{my_lib_8h_a9cd67f3be58dbc886c0def221160536b}
+
+\item 
+\#define {\bfseries B\+U\+T\+T\+O\+N\+\_\+B}~(1$<$$<$1)\hypertarget{my_lib_8h_a94a5d8e6a479582220c135a95b935948}{}\label{my_lib_8h_a94a5d8e6a479582220c135a95b935948}
+
+\item 
+\#define {\bfseries B\+U\+T\+T\+O\+N\+\_\+\+S\+E\+L\+E\+CT}~(1$<$$<$2)\hypertarget{my_lib_8h_a866a632a7e5c01da80d091d7ca05c0b5}{}\label{my_lib_8h_a866a632a7e5c01da80d091d7ca05c0b5}
+
+\item 
+\#define {\bfseries B\+U\+T\+T\+O\+N\+\_\+\+S\+T\+A\+RT}~(1$<$$<$3)\hypertarget{my_lib_8h_a0dd865ec0061ef01902beba5e257e298}{}\label{my_lib_8h_a0dd865ec0061ef01902beba5e257e298}
+
+\item 
+\#define {\bfseries B\+U\+T\+T\+O\+N\+\_\+\+R\+I\+G\+HT}~(1$<$$<$4)\hypertarget{my_lib_8h_a4cebcc5780890f5f5fbca9d072ea9652}{}\label{my_lib_8h_a4cebcc5780890f5f5fbca9d072ea9652}
+
+\item 
+\#define {\bfseries B\+U\+T\+T\+O\+N\+\_\+\+L\+E\+FT}~(1$<$$<$5)\hypertarget{my_lib_8h_ad08344c00ddb49531348245d0c82987f}{}\label{my_lib_8h_ad08344c00ddb49531348245d0c82987f}
+
+\item 
+\#define {\bfseries B\+U\+T\+T\+O\+N\+\_\+\+UP}~(1$<$$<$6)\hypertarget{my_lib_8h_a7639b378d6f757175ed0f9e8552e6cea}{}\label{my_lib_8h_a7639b378d6f757175ed0f9e8552e6cea}
+
+\item 
+\#define {\bfseries B\+U\+T\+T\+O\+N\+\_\+\+D\+O\+WN}~(1$<$$<$7)\hypertarget{my_lib_8h_a7e8516b8781963aa69154f9fc67b658a}{}\label{my_lib_8h_a7e8516b8781963aa69154f9fc67b658a}
+
+\item 
+\#define {\bfseries B\+U\+T\+T\+O\+N\+\_\+R}~(1$<$$<$8)\hypertarget{my_lib_8h_ab3c80df399c1411404ac1cf88c4910c8}{}\label{my_lib_8h_ab3c80df399c1411404ac1cf88c4910c8}
+
+\item 
+\#define {\bfseries B\+U\+T\+T\+O\+N\+\_\+L}~(1$<$$<$9)\hypertarget{my_lib_8h_a8129b8a94bc4253a26d2263a046c7053}{}\label{my_lib_8h_a8129b8a94bc4253a26d2263a046c7053}
+
+\item 
+\#define {\bfseries K\+E\+Y\+\_\+\+D\+O\+W\+N\+\_\+\+N\+OW}(key)~($\sim$(B\+U\+T\+T\+O\+NS) \& (key))\hypertarget{my_lib_8h_a2ba60980b1dd2232b89a89d48a108d89}{}\label{my_lib_8h_a2ba60980b1dd2232b89a89d48a108d89}
+
+\item 
+\#define {\bfseries B\+U\+T\+T\+O\+NS}~$\ast$(volatile \hyperlink{my_lib_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32} $\ast$)0x4000130\hypertarget{my_lib_8h_a2a2f690f8bdeeb4003203ff5e3edaffc}{}\label{my_lib_8h_a2a2f690f8bdeeb4003203ff5e3edaffc}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned int \hyperlink{my_lib_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}
+\item 
+typedef unsigned short \hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}
+\item 
+typedef unsigned char \hyperlink{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{u8}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{my_lib_8h_a884424651dc09b6a2ab852be013e4365}{delay} (int n)
+\item 
+\hyperlink{my_lib_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32} \hyperlink{my_lib_8h_a30f7c677f58774dd7d32ee1506852d0b}{key\+Sensitive\+Delay} (int n)
+\item 
+void \hyperlink{my_lib_8h_aa66b47c415abc2d66be824893ad1d079}{wait\+For\+V\+Blank} ()
+\item 
+int \hyperlink{my_lib_8h_a197f7525ac0f6f981fd8872a542f0362}{qran\+\_\+range} (int min, int max)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$ \hyperlink{my_lib_8h_a0a7c0ba1591b9aca7600d5641ef485f4}{video\+Buffer}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains generic library functions and includes the other headers. 
+
+\begin{DoxyAuthor}{Author}
+Cem Gokmen 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2 Apr 2017 
+\end{DoxyDate}
+
+
+\subsection{Typedef Documentation}
+\index{my\+Lib.\+h@{my\+Lib.\+h}!u16@{u16}}
+\index{u16@{u16}!my\+Lib.\+h@{my\+Lib.\+h}}
+\subsubsection[{\texorpdfstring{u16}{u16}}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned short {\bf u16}}\hypertarget{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{}\label{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}
+An unsigned 16-\/bit (2-\/byte) type \index{my\+Lib.\+h@{my\+Lib.\+h}!u32@{u32}}
+\index{u32@{u32}!my\+Lib.\+h@{my\+Lib.\+h}}
+\subsubsection[{\texorpdfstring{u32}{u32}}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned int {\bf u32}}\hypertarget{my_lib_8h_a10e94b422ef0c20dcdec20d31a1f5049}{}\label{my_lib_8h_a10e94b422ef0c20dcdec20d31a1f5049}
+An unsigned 32-\/bit (4-\/byte) type \index{my\+Lib.\+h@{my\+Lib.\+h}!u8@{u8}}
+\index{u8@{u8}!my\+Lib.\+h@{my\+Lib.\+h}}
+\subsubsection[{\texorpdfstring{u8}{u8}}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned char {\bf u8}}\hypertarget{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{}\label{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}
+An unsigned 8-\/bit (1-\/byte) type. Note that this type cannot be written onto R\+AM directly. 
+
+\subsection{Function Documentation}
+\index{my\+Lib.\+h@{my\+Lib.\+h}!delay@{delay}}
+\index{delay@{delay}!my\+Lib.\+h@{my\+Lib.\+h}}
+\subsubsection[{\texorpdfstring{delay(int n)}{delay(int n)}}]{\setlength{\rightskip}{0pt plus 5cm}void delay (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\hypertarget{my_lib_8h_a884424651dc09b6a2ab852be013e4365}{}\label{my_lib_8h_a884424651dc09b6a2ab852be013e4365}
+Runs a blocking loop. 
+\begin{DoxyParams}{Parameters}
+{\em n} & How long to run loop for \\
+\hline
+\end{DoxyParams}
+\index{my\+Lib.\+h@{my\+Lib.\+h}!key\+Sensitive\+Delay@{key\+Sensitive\+Delay}}
+\index{key\+Sensitive\+Delay@{key\+Sensitive\+Delay}!my\+Lib.\+h@{my\+Lib.\+h}}
+\subsubsection[{\texorpdfstring{key\+Sensitive\+Delay(int n)}{keySensitiveDelay(int n)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u32} key\+Sensitive\+Delay (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\hypertarget{my_lib_8h_a30f7c677f58774dd7d32ee1506852d0b}{}\label{my_lib_8h_a30f7c677f58774dd7d32ee1506852d0b}
+Runs a blocking loop that checks for key presses during its process. 
+\begin{DoxyParams}{Parameters}
+{\em n} & How long to run loop for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A merged bitvector of all key presses 
+\end{DoxyReturn}
+\index{my\+Lib.\+h@{my\+Lib.\+h}!qran\+\_\+range@{qran\+\_\+range}}
+\index{qran\+\_\+range@{qran\+\_\+range}!my\+Lib.\+h@{my\+Lib.\+h}}
+\subsubsection[{\texorpdfstring{qran\+\_\+range(int min, int max)}{qran_range(int min, int max)}}]{\setlength{\rightskip}{0pt plus 5cm}int qran\+\_\+range (
+\begin{DoxyParamCaption}
+\item[{int}]{min, }
+\item[{int}]{max}
+\end{DoxyParamCaption}
+)}\hypertarget{my_lib_8h_a197f7525ac0f6f981fd8872a542f0362}{}\label{my_lib_8h_a197f7525ac0f6f981fd8872a542f0362}
+Generates a pseudo-\/random number between min and max, inclusive.
+
+I totally snatched this function from tonc.
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & bottom end of range. \\
+\hline
+{\em max} & top end of range. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+random number in the given range. 
+\end{DoxyReturn}
+\index{my\+Lib.\+h@{my\+Lib.\+h}!wait\+For\+V\+Blank@{wait\+For\+V\+Blank}}
+\index{wait\+For\+V\+Blank@{wait\+For\+V\+Blank}!my\+Lib.\+h@{my\+Lib.\+h}}
+\subsubsection[{\texorpdfstring{wait\+For\+V\+Blank()}{waitForVBlank()}}]{\setlength{\rightskip}{0pt plus 5cm}void wait\+For\+V\+Blank (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{my_lib_8h_aa66b47c415abc2d66be824893ad1d079}{}\label{my_lib_8h_aa66b47c415abc2d66be824893ad1d079}
+Runs a blocking loop until the start of next V\+Blank. 
+
+\subsection{Variable Documentation}
+\index{my\+Lib.\+h@{my\+Lib.\+h}!video\+Buffer@{video\+Buffer}}
+\index{video\+Buffer@{video\+Buffer}!my\+Lib.\+h@{my\+Lib.\+h}}
+\subsubsection[{\texorpdfstring{video\+Buffer}{videoBuffer}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u16}$\ast$ video\+Buffer}\hypertarget{my_lib_8h_a0a7c0ba1591b9aca7600d5641ef485f4}{}\label{my_lib_8h_a0a7c0ba1591b9aca7600d5641ef485f4}
+The video buffer pointer for drawing in Mode 3 

@@ -1,28 +1,50 @@
 \hypertarget{struct_game}{}\section{Game Struct Reference}
 \label{struct_game}\index{Game@{Game}}
+
+
+{\ttfamily \#include $<$cnake\+Logic.\+h$>$}
+
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_snake}{Snake} $\ast$ {\bfseries snake}\hypertarget{struct_game_a408cd599ea288e5b692809edb69e65c2}{}\label{struct_game_a408cd599ea288e5b692809edb69e65c2}
-
+\hyperlink{struct_snake}{Snake} $\ast$ \hyperlink{struct_game_a408cd599ea288e5b692809edb69e65c2}{snake}
 \item 
-u32 {\bfseries score}\hypertarget{struct_game_aa164f9e96d69917e222030f95185f844}{}\label{struct_game_aa164f9e96d69917e222030f95185f844}
-
+\hyperlink{my_lib_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32} \hyperlink{struct_game_aa164f9e96d69917e222030f95185f844}{score}
 \item 
-u32 {\bfseries current\+Cycle}\hypertarget{struct_game_a514de0cd72def19660b79631e4c1bdd4}{}\label{struct_game_a514de0cd72def19660b79631e4c1bdd4}
-
+\hyperlink{my_lib_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32} \hyperlink{struct_game_a514de0cd72def19660b79631e4c1bdd4}{current\+Cycle}
 \item 
-u8 {\bfseries paused}\hypertarget{struct_game_a3ade7f893f61c2117f2ed3b49842cd64}{}\label{struct_game_a3ade7f893f61c2117f2ed3b49842cd64}
-
+\hyperlink{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{struct_game_a3ade7f893f61c2117f2ed3b49842cd64}{paused}
 \item 
-u16 {\bfseries num\+Foods}\hypertarget{struct_game_a6eb06bc26a099c346c277fcaa4a1f30e}{}\label{struct_game_a6eb06bc26a099c346c277fcaa4a1f30e}
-
+\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} \hyperlink{struct_game_a6eb06bc26a099c346c277fcaa4a1f30e}{num\+Foods}
 \item 
-\hyperlink{struct_food}{Food} $\ast$$\ast$ {\bfseries foods}\hypertarget{struct_game_aab913a1e81d59801882afbd45fa496d1}{}\label{struct_game_aab913a1e81d59801882afbd45fa496d1}
-
+\hyperlink{struct_food}{Food} $\ast$$\ast$ \hyperlink{struct_game_aab913a1e81d59801882afbd45fa496d1}{foods}
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+The \hyperlink{struct_game}{Game} struct is used for keeping track of the entire game. 
+
+\subsection{Field Documentation}
+\index{Game@{Game}!current\+Cycle@{current\+Cycle}}
+\index{current\+Cycle@{current\+Cycle}!Game@{Game}}
+\subsubsection[{\texorpdfstring{current\+Cycle}{currentCycle}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u32} current\+Cycle}\hypertarget{struct_game_a514de0cd72def19660b79631e4c1bdd4}{}\label{struct_game_a514de0cd72def19660b79631e4c1bdd4}
+The current cycle count (i.\+e. tick count) \index{Game@{Game}!foods@{foods}}
+\index{foods@{foods}!Game@{Game}}
+\subsubsection[{\texorpdfstring{foods}{foods}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Food}$\ast$$\ast$ foods}\hypertarget{struct_game_aab913a1e81d59801882afbd45fa496d1}{}\label{struct_game_aab913a1e81d59801882afbd45fa496d1}
+Array of food pointers to the foods on the map \index{Game@{Game}!num\+Foods@{num\+Foods}}
+\index{num\+Foods@{num\+Foods}!Game@{Game}}
+\subsubsection[{\texorpdfstring{num\+Foods}{numFoods}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u16} num\+Foods}\hypertarget{struct_game_a6eb06bc26a099c346c277fcaa4a1f30e}{}\label{struct_game_a6eb06bc26a099c346c277fcaa4a1f30e}
+Number of foods on the map \index{Game@{Game}!paused@{paused}}
+\index{paused@{paused}!Game@{Game}}
+\subsubsection[{\texorpdfstring{paused}{paused}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} paused}\hypertarget{struct_game_a3ade7f893f61c2117f2ed3b49842cd64}{}\label{struct_game_a3ade7f893f61c2117f2ed3b49842cd64}
+Whether or not the game is paused \index{Game@{Game}!score@{score}}
+\index{score@{score}!Game@{Game}}
+\subsubsection[{\texorpdfstring{score}{score}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u32} score}\hypertarget{struct_game_aa164f9e96d69917e222030f95185f844}{}\label{struct_game_aa164f9e96d69917e222030f95185f844}
+The current score \index{Game@{Game}!snake@{snake}}
+\index{snake@{snake}!Game@{Game}}
+\subsubsection[{\texorpdfstring{snake}{snake}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Snake}$\ast$ snake}\hypertarget{struct_game_a408cd599ea288e5b692809edb69e65c2}{}\label{struct_game_a408cd599ea288e5b692809edb69e65c2}
+The snake present ingame 
+
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/cnake\+Logic.\+h\end{DoxyCompactItemize}
+src/\hyperlink{cnake_logic_8h}{cnake\+Logic.\+h}\end{DoxyCompactItemize}

@@ -1,12 +1,6 @@
 #include "myLib.h"
 #include <stdlib.h>
 
-/**
- * createGame
- * Creates a functional game struct in heap memory and returns a pointer to it.
- *
- * @return Pointer to the created game.
- */
 Game* createGame() {
     // Initialize the Snake
     Snake *s = createSnake();
@@ -23,12 +17,6 @@ Game* createGame() {
     return g;
 }
 
-/**
- * freeGame
- * Frees up a game from memory including its members.
- *
- * @param g Pointer to the game to free up.
- */
 void freeGame(Game *g) {
     freeSnake(g->snake);
 
@@ -40,14 +28,6 @@ void freeGame(Game *g) {
     free(g);
 }
 
-/**
- * processGame
- * Main tick loop of the game. Evaluates key presses, moves snake, runs
- * collision checks, updates score, etc.
- *
- * @param g           Pointer to the game to process.
- * @param keysPressed Merged key press vector from delay time to process.
- */
 void processGame(Game *g, u32 keysPressed) {
     if (!g->paused) {
 	   // Start by incrementing game cycle
@@ -140,22 +120,10 @@ void processGame(Game *g, u32 keysPressed) {
     // And we're done!
 }
 
-/**
- * togglePause
- * Toggles the pause state of a game.
- *
- * @param g Pointer to the game to toggle the pause state of.
- */
 void togglePause(Game *g) {
     g->paused = !g->paused;
 }
 
-/**
- * createSnake
- * Creates a functional snake struct in heap memory and returns a pointer to it.
- *
- * @return Pointer to the created snake.
- */
 Snake* createSnake() {
     Snake *s = malloc(sizeof(Snake));
     Point *head = malloc(sizeof(Point));
@@ -173,12 +141,6 @@ Snake* createSnake() {
     return s;
 }
 
-/**
- * freeSnake
- * Frees up a snake from memory including its members.
- *
- * @param s Pointer to the snake to free up.
- */
 void freeSnake(Snake *s) {
     free(s->head);
 
@@ -191,14 +153,6 @@ void freeSnake(Snake *s) {
     free(s);
 }
 
-/**
- * turnSnake
- * Turns a snake: adds a turn to the Snake's turns vector and
- * updates the direction it's facing.
- *
- * @param s      [description]
- * @param facing [description]
- */
 void turnSnake(Snake *s, Direction facing) {
     if (s->facing != facing) {
         if (getOpposite(s->facing) != facing) {
@@ -227,27 +181,11 @@ void turnSnake(Snake *s, Direction facing) {
     }
 }
 
-/**
- * freeTurn
- * Frees up a turn from memory including its members.
- *
- * @param t Pointer to the turn to free up.
- */
 void freeTurn(Turn *t) {
     free(t->location);
     free(t);
 }
 
-/**
- * checkSelfCollision
- * Checks if the snake is colliding with itself.
- *
- * For the sake of performance this only checks if the part between
- * the snake's head and its last turn crosses any other part of the snake.
- *
- * @param  s Pointer to the snake to check for self collisions.
- * @return   1 if collision exists, 0 otherwise.
- */
 int checkSelfCollision(Snake *s) {
 	// Get the minX minY all that
 	if (s->numTurns < 3) {
@@ -307,13 +245,6 @@ int checkSelfCollision(Snake *s) {
     return 0;
 }
 
-/**
- * checkWallCollision
- * Checks if the snake is colliding with a wall.
- *
- * @param  s Pointer to the snake to check for wall collisions.
- * @return   1 if collision exists, 0 otherwise.
- */
 int checkWallCollision(Snake *s) {
     return  s->head->x <= 0 ||
             s->head->x >= SNAKE_BOARD_WIDTH - 1 ||
@@ -321,15 +252,6 @@ int checkWallCollision(Snake *s) {
             s->head->y >= SNAKE_BOARD_HEIGHT - 1;
 }
 
-/**
- * createRandomFood
- * Creates a functional food struct in heap memory and returns a pointer to it.
- * The food will be placed at a random point on the map that is not occupied
- * by the snake.
- *
- * @param g Pointer to the game to add this food to.
- * @return  Pointer to the created food.
- */
 Food* createRandomFood(Game *g) {
     Food *f = malloc(sizeof(Food));
 	f->value = FOOD_LENGTH_INCREMENT;
@@ -400,28 +322,11 @@ Food* createRandomFood(Game *g) {
     return f;
 }
 
-/**
- * freeFood
- * Frees up a food from memory including its members.
- *
- * @param f Pointer to the food to free up.
- */
 void freeFood(Food *f) {
     free(f->location);
     free(f);
 }
 
-/**
- * checkFoodCollision
- * Checks if the snake is colliding with a given food.
- *
- * For the sake of performance this only checks if the food is between
- * the snake's head and its last turn.
- *
- * @param  s Pointer to the snake to check for collisions.
- * @param  f Pointer to the food to check if the snake is colliding with.
- * @return   1 if collision exists, 0 otherwise.
- */
 int checkFoodCollision(Snake *s, Food *f) {
 	if (s->numTurns > 0) {
 		if (isBetween(f->location, s->head, s->turns[0]->location)) {
@@ -471,14 +376,6 @@ int checkFoodCollision(Snake *s, Food *f) {
 	return 0;
 }
 
-/**
- * eatFood
- * Makes the snake eat a food: adds the length increase, the score, and
- * marks the food for deletion.
- *
- * @param f Pointer to the food to be eaten.
- * @param g Pointer to the game to add the benefits to.
- */
 void eatFood(Food *f, Game *g) {
     // We set the food to expire now so
     // that it will be deleted next cycle
@@ -490,18 +387,6 @@ void eatFood(Food *f, Game *g) {
 	s->growToLength += f->value;
 }
 
-/**
- * isBetween
- * Checks if a given point is on the line segment between two other points.
- *
- * For the sake of performance this contains optimizations that cause
- * this function to work only with vertical and horizontal lines.
- *
- * @param  point Pointer to the point we want to check if on a line segment.
- * @param  p1    Pointer to one endpoint of the line segment.
- * @param  p2    Pointer to other endpoint of the line segment.
- * @return       1 if the point is on the line, 0 otherwise.
- */
 int isBetween(Point *point, Point *p1, Point *p2) {
     u16 minX = p1->x < p2->x ? p1->x : p2->x;
     u16 maxX = p1->x > p2->x ? p1->x : p2->x;
@@ -519,19 +404,6 @@ int isBetween(Point *point, Point *p1, Point *p2) {
     return 0;
 }
 
-/**
- * distBetween
- *
- * Gets the distance between two lines.
- *
- * For the sake of performance this contains optimizations that cause
- * this function to work only with two points on the same vertical or
- * horizontal line.
- *
- * @param  p1 Pointer to the point to find the distance from.
- * @param  p2 Pointer to the point to find the distance to.
- * @return    The distance between the two points.
- */
 int distBetween(Point *p1, Point *p2) {
 	if (p1->x != p2->x) {
 		// This means the line is horizontal
@@ -541,13 +413,6 @@ int distBetween(Point *p1, Point *p2) {
 	}
 }
 
-/**
- * getOpposite
- * Given a facing direction, returns the opposite direction.
- *
- * @param  d The direction whose opposite we want to find.
- * @return   The opposite direction.
- */
 Direction getOpposite(Direction d) {
 	switch (d) {
 		case UP:

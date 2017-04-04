@@ -1,19 +1,35 @@
 \hypertarget{struct_food}{}\section{Food Struct Reference}
 \label{struct_food}\index{Food@{Food}}
+
+
+{\ttfamily \#include $<$cnake\+Logic.\+h$>$}
+
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_point}{Point} $\ast$ {\bfseries location}\hypertarget{struct_food_a89408ee02ab1ebdda1bb89dbfd56f7a1}{}\label{struct_food_a89408ee02ab1ebdda1bb89dbfd56f7a1}
-
+\hyperlink{struct_point}{Point} $\ast$ \hyperlink{struct_food_a89408ee02ab1ebdda1bb89dbfd56f7a1}{location}
 \item 
-u32 {\bfseries delete\+On\+Cycle}\hypertarget{struct_food_a6748ed675c840e1a6b6db19cc5b0a606}{}\label{struct_food_a6748ed675c840e1a6b6db19cc5b0a606}
-
+\hyperlink{my_lib_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32} \hyperlink{struct_food_a6748ed675c840e1a6b6db19cc5b0a606}{delete\+On\+Cycle}
 \item 
-u16 {\bfseries value}\hypertarget{struct_food_a66236e78407f7f7560eb9ece512621c7}{}\label{struct_food_a66236e78407f7f7560eb9ece512621c7}
-
+\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} \hyperlink{struct_food_a66236e78407f7f7560eb9ece512621c7}{value}
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+The \hyperlink{struct_food}{Food} struct is used for keeping track of the foods on the map. 
+
+\subsection{Field Documentation}
+\index{Food@{Food}!delete\+On\+Cycle@{delete\+On\+Cycle}}
+\index{delete\+On\+Cycle@{delete\+On\+Cycle}!Food@{Food}}
+\subsubsection[{\texorpdfstring{delete\+On\+Cycle}{deleteOnCycle}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u32} delete\+On\+Cycle}\hypertarget{struct_food_a6748ed675c840e1a6b6db19cc5b0a606}{}\label{struct_food_a6748ed675c840e1a6b6db19cc5b0a606}
+What game cycle the food must be deleted on (essentially expiry date) \index{Food@{Food}!location@{location}}
+\index{location@{location}!Food@{Food}}
+\subsubsection[{\texorpdfstring{location}{location}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point}$\ast$ location}\hypertarget{struct_food_a89408ee02ab1ebdda1bb89dbfd56f7a1}{}\label{struct_food_a89408ee02ab1ebdda1bb89dbfd56f7a1}
+The location of the food on the board \index{Food@{Food}!value@{value}}
+\index{value@{value}!Food@{Food}}
+\subsubsection[{\texorpdfstring{value}{value}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u16} value}\hypertarget{struct_food_a66236e78407f7f7560eb9ece512621c7}{}\label{struct_food_a66236e78407f7f7560eb9ece512621c7}
+How much the snake will grow after eating this food 
+
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/cnake\+Logic.\+h\end{DoxyCompactItemize}
+src/\hyperlink{cnake_logic_8h}{cnake\+Logic.\+h}\end{DoxyCompactItemize}

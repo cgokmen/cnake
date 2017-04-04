@@ -1,31 +1,55 @@
 \hypertarget{struct_snake}{}\section{Snake Struct Reference}
 \label{struct_snake}\index{Snake@{Snake}}
+
+
+{\ttfamily \#include $<$cnake\+Logic.\+h$>$}
+
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_point}{Point} $\ast$ {\bfseries head}\hypertarget{struct_snake_accdccb4805540fdd3b0380f2f3ed5796}{}\label{struct_snake_accdccb4805540fdd3b0380f2f3ed5796}
-
+\hyperlink{struct_point}{Point} $\ast$ \hyperlink{struct_snake_accdccb4805540fdd3b0380f2f3ed5796}{head}
 \item 
-u16 {\bfseries length}\hypertarget{struct_snake_a205e2b97fe60d899412ca79655cc064c}{}\label{struct_snake_a205e2b97fe60d899412ca79655cc064c}
-
+\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} \hyperlink{struct_snake_a205e2b97fe60d899412ca79655cc064c}{length}
 \item 
-u16 {\bfseries grow\+To\+Length}\hypertarget{struct_snake_ad7b38e6e181a7fc796cdb9dded9878d9}{}\label{struct_snake_ad7b38e6e181a7fc796cdb9dded9878d9}
-
+\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} \hyperlink{struct_snake_ad7b38e6e181a7fc796cdb9dded9878d9}{grow\+To\+Length}
 \item 
-Direction {\bfseries facing}\hypertarget{struct_snake_a8353069dfd601a3f9aa2fef0a15cd5fd}{}\label{struct_snake_a8353069dfd601a3f9aa2fef0a15cd5fd}
-
+\hyperlink{cnake_logic_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} \hyperlink{struct_snake_a8353069dfd601a3f9aa2fef0a15cd5fd}{facing}
 \item 
-u8 {\bfseries dead}\hypertarget{struct_snake_a2b2f605b873a12656757f595ce3ed659}{}\label{struct_snake_a2b2f605b873a12656757f595ce3ed659}
-
+\hyperlink{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{struct_snake_a2b2f605b873a12656757f595ce3ed659}{dead}
 \item 
-u16 {\bfseries num\+Turns}\hypertarget{struct_snake_a4bff3104a813408b17c1f687e1461f81}{}\label{struct_snake_a4bff3104a813408b17c1f687e1461f81}
-
+\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} \hyperlink{struct_snake_a4bff3104a813408b17c1f687e1461f81}{num\+Turns}
 \item 
-\hyperlink{struct_turn}{Turn} $\ast$$\ast$ {\bfseries turns}\hypertarget{struct_snake_af820fd5b127c523ce57ad98829dfe29f}{}\label{struct_snake_af820fd5b127c523ce57ad98829dfe29f}
-
+\hyperlink{struct_turn}{Turn} $\ast$$\ast$ \hyperlink{struct_snake_af820fd5b127c523ce57ad98829dfe29f}{turns}
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+The \hyperlink{struct_snake}{Snake} struct is used for keeping track of the snake in general. 
+
+\subsection{Field Documentation}
+\index{Snake@{Snake}!dead@{dead}}
+\index{dead@{dead}!Snake@{Snake}}
+\subsubsection[{\texorpdfstring{dead}{dead}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} dead}\hypertarget{struct_snake_a2b2f605b873a12656757f595ce3ed659}{}\label{struct_snake_a2b2f605b873a12656757f595ce3ed659}
+Whether or not the snake is dead \index{Snake@{Snake}!facing@{facing}}
+\index{facing@{facing}!Snake@{Snake}}
+\subsubsection[{\texorpdfstring{facing}{facing}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Direction} facing}\hypertarget{struct_snake_a8353069dfd601a3f9aa2fef0a15cd5fd}{}\label{struct_snake_a8353069dfd601a3f9aa2fef0a15cd5fd}
+The direction the snake is currently facing \index{Snake@{Snake}!grow\+To\+Length@{grow\+To\+Length}}
+\index{grow\+To\+Length@{grow\+To\+Length}!Snake@{Snake}}
+\subsubsection[{\texorpdfstring{grow\+To\+Length}{growToLength}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u16} grow\+To\+Length}\hypertarget{struct_snake_ad7b38e6e181a7fc796cdb9dded9878d9}{}\label{struct_snake_ad7b38e6e181a7fc796cdb9dded9878d9}
+The length the snake must grow to. This will be equal to length unless the snake just ate a food and needs to grow. \index{Snake@{Snake}!head@{head}}
+\index{head@{head}!Snake@{Snake}}
+\subsubsection[{\texorpdfstring{head}{head}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point}$\ast$ head}\hypertarget{struct_snake_accdccb4805540fdd3b0380f2f3ed5796}{}\label{struct_snake_accdccb4805540fdd3b0380f2f3ed5796}
+The position of the head of the snake \index{Snake@{Snake}!length@{length}}
+\index{length@{length}!Snake@{Snake}}
+\subsubsection[{\texorpdfstring{length}{length}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u16} length}\hypertarget{struct_snake_a205e2b97fe60d899412ca79655cc064c}{}\label{struct_snake_a205e2b97fe60d899412ca79655cc064c}
+The length of the snake \index{Snake@{Snake}!num\+Turns@{num\+Turns}}
+\index{num\+Turns@{num\+Turns}!Snake@{Snake}}
+\subsubsection[{\texorpdfstring{num\+Turns}{numTurns}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u16} num\+Turns}\hypertarget{struct_snake_a4bff3104a813408b17c1f687e1461f81}{}\label{struct_snake_a4bff3104a813408b17c1f687e1461f81}
+Number of turns the snake has made \index{Snake@{Snake}!turns@{turns}}
+\index{turns@{turns}!Snake@{Snake}}
+\subsubsection[{\texorpdfstring{turns}{turns}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Turn}$\ast$$\ast$ turns}\hypertarget{struct_snake_af820fd5b127c523ce57ad98829dfe29f}{}\label{struct_snake_af820fd5b127c523ce57ad98829dfe29f}
+Array of turn pointers to the turns the snake has made 
+
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/cnake\+Logic.\+h\end{DoxyCompactItemize}
+src/\hyperlink{cnake_logic_8h}{cnake\+Logic.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,174 @@
+\hypertarget{cnake_graphics_8h}{}\section{src/cnake\+Graphics.h File Reference}
+\label{cnake_graphics_8h}\index{src/cnake\+Graphics.\+h@{src/cnake\+Graphics.\+h}}
+
+
+This file contains cnake rendering functions.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{cnake_graphics_8h_a935e0e70f3100906d65994a9bd120589}{draw\+Game\+Line\+Between} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x1, int x2, int y1, int y2, \hyperlink{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{u8} color)
+\item 
+void \hyperlink{cnake_graphics_8h_a46c05491f8ce7195638251f92c7f04a6}{draw\+Game\+Dot} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, \hyperlink{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{u8} color)
+\item 
+void \hyperlink{cnake_graphics_8h_ac99d245c108455f9a70c64afdfced27d}{draw\+Game} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, \hyperlink{struct_game}{Game} $\ast$g)
+\item 
+void \hyperlink{cnake_graphics_8h_aaf222d565f2d5d5c792257fa742a1a85}{draw\+Score} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, \hyperlink{struct_game}{Game} $\ast$g)
+\item 
+void \hyperlink{cnake_graphics_8h_a88d154089a4c759cdbbc1c2ba9e75b30}{draw\+Walls} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer)
+\item 
+void \hyperlink{cnake_graphics_8h_a6e1748b9fe731cd61ec5da9fd82d5b53}{draw\+Snake} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, \hyperlink{struct_snake}{Snake} $\ast$s)
+\item 
+void \hyperlink{cnake_graphics_8h_adde93aceb9fd9b07b2f0a9fa0368208c}{draw\+Food} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, \hyperlink{struct_food}{Food} $\ast$f)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains cnake rendering functions. 
+
+\begin{DoxyAuthor}{Author}
+Cem Gokmen 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2 Apr 2017 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{cnake\+Graphics.\+h@{cnake\+Graphics.\+h}!draw\+Food@{draw\+Food}}
+\index{draw\+Food@{draw\+Food}!cnake\+Graphics.\+h@{cnake\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Food(u16 $\ast$buffer, Food $\ast$f)}{drawFood(u16 *buffer, Food *f)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Food (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{{\bf Food} $\ast$}]{f}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_graphics_8h_adde93aceb9fd9b07b2f0a9fa0368208c}{}\label{cnake_graphics_8h_adde93aceb9fd9b07b2f0a9fa0368208c}
+Draws a food.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the buffer to draw onto. \\
+\hline
+{\em f} & Pointer to the food we want to draw. \\
+\hline
+\end{DoxyParams}
+\index{cnake\+Graphics.\+h@{cnake\+Graphics.\+h}!draw\+Game@{draw\+Game}}
+\index{draw\+Game@{draw\+Game}!cnake\+Graphics.\+h@{cnake\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Game(u16 $\ast$buffer, Game $\ast$g)}{drawGame(u16 *buffer, Game *g)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Game (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{{\bf Game} $\ast$}]{g}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_graphics_8h_ac99d245c108455f9a70c64afdfced27d}{}\label{cnake_graphics_8h_ac99d245c108455f9a70c64afdfced27d}
+Draws all components of a \hyperlink{struct_game}{Game}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the buffer to draw onto. \\
+\hline
+{\em g} & Pointer to the game we want to draw. \\
+\hline
+\end{DoxyParams}
+\index{cnake\+Graphics.\+h@{cnake\+Graphics.\+h}!draw\+Game\+Dot@{draw\+Game\+Dot}}
+\index{draw\+Game\+Dot@{draw\+Game\+Dot}!cnake\+Graphics.\+h@{cnake\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Game\+Dot(u16 $\ast$buffer, int x, int y, u8 color)}{drawGameDot(u16 *buffer, int x, int y, u8 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Game\+Dot (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{{\bf u8}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_graphics_8h_a46c05491f8ce7195638251f92c7f04a6}{}\label{cnake_graphics_8h_a46c05491f8ce7195638251f92c7f04a6}
+Draws one game point. This will be an even number of pixels on the screen.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the buffer to draw onto \\
+\hline
+{\em x} & The x coordinate of the pixel on the game plane \\
+\hline
+{\em y} & The y coordinate of the pixel on the game plane \\
+\hline
+{\em color} & Color to draw the pixel in (u8 index of color on the palette) \\
+\hline
+\end{DoxyParams}
+\index{cnake\+Graphics.\+h@{cnake\+Graphics.\+h}!draw\+Game\+Line\+Between@{draw\+Game\+Line\+Between}}
+\index{draw\+Game\+Line\+Between@{draw\+Game\+Line\+Between}!cnake\+Graphics.\+h@{cnake\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Game\+Line\+Between(u16 $\ast$buffer, int x1, int x2, int y1, int y2, u8 color)}{drawGameLineBetween(u16 *buffer, int x1, int x2, int y1, int y2, u8 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Game\+Line\+Between (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x1, }
+\item[{int}]{x2, }
+\item[{int}]{y1, }
+\item[{int}]{y2, }
+\item[{{\bf u8}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_graphics_8h_a935e0e70f3100906d65994a9bd120589}{}\label{cnake_graphics_8h_a935e0e70f3100906d65994a9bd120589}
+Draws a line between two game points.
+
+This function does not require the two points to be in increasing order.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the buffer to draw onto \\
+\hline
+{\em x1} & The x coordinate of the starting point of the line \\
+\hline
+{\em y1} & The y coordinate of the starting point of the line \\
+\hline
+{\em x2} & The x coordinate of the ending point of the line \\
+\hline
+{\em y2} & The y coordinate of the ending point of the line \\
+\hline
+{\em color} & Color to draw the pixel in (u8 index of color on the palette) \\
+\hline
+\end{DoxyParams}
+\index{cnake\+Graphics.\+h@{cnake\+Graphics.\+h}!draw\+Score@{draw\+Score}}
+\index{draw\+Score@{draw\+Score}!cnake\+Graphics.\+h@{cnake\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Score(u16 $\ast$buffer, Game $\ast$g)}{drawScore(u16 *buffer, Game *g)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Score (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{{\bf Game} $\ast$}]{g}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_graphics_8h_aaf222d565f2d5d5c792257fa742a1a85}{}\label{cnake_graphics_8h_aaf222d565f2d5d5c792257fa742a1a85}
+Draws the scoreboard section of the game. This section contains the current score, the current paused status and a cnake version label. In debug mode, instead of the label it contains the current cycle count.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the buffer to draw onto. \\
+\hline
+{\em g} & Pointer to the game whose scoreboard we want to draw. \\
+\hline
+\end{DoxyParams}
+\index{cnake\+Graphics.\+h@{cnake\+Graphics.\+h}!draw\+Snake@{draw\+Snake}}
+\index{draw\+Snake@{draw\+Snake}!cnake\+Graphics.\+h@{cnake\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Snake(u16 $\ast$buffer, Snake $\ast$s)}{drawSnake(u16 *buffer, Snake *s)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Snake (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{{\bf Snake} $\ast$}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_graphics_8h_a6e1748b9fe731cd61ec5da9fd82d5b53}{}\label{cnake_graphics_8h_a6e1748b9fe731cd61ec5da9fd82d5b53}
+Draws a snake.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the buffer to draw onto. \\
+\hline
+{\em s} & Pointer to the snake we want to draw. \\
+\hline
+\end{DoxyParams}
+\index{cnake\+Graphics.\+h@{cnake\+Graphics.\+h}!draw\+Walls@{draw\+Walls}}
+\index{draw\+Walls@{draw\+Walls}!cnake\+Graphics.\+h@{cnake\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Walls(u16 $\ast$buffer)}{drawWalls(u16 *buffer)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Walls (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_graphics_8h_a88d154089a4c759cdbbc1c2ba9e75b30}{}\label{cnake_graphics_8h_a88d154089a4c759cdbbc1c2ba9e75b30}
+Draws the walls of the \hyperlink{struct_snake}{Snake} board.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the buffer to draw onto. \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,19 @@
+/**
+\mainpage cnake Documentation
+
+Hello, welcome to the cnake documentation.
+
+For game logic documentation, visit cnakeLogic.h.
+
+For game rendering documentation, visit cnakeGraphics.h.
+
+For GBA graphics documentation, visit gbaGraphics.h.
+
+For cnake settings documentation, visit cnakeSettings.h.
+
+For cnake library documentation, visit myLib.h.
+
+
+
+Documentation for the Game, Snake, Food, Turn and Point structures are also available.
+*/

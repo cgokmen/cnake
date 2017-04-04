@@ -1,4 +1,20 @@
 var searchData=
 [
-  ['snake',['Snake',['../struct_snake.html',1,'']]]
+  ['facing',['facing',['../struct_snake.html#a8353069dfd601a3f9aa2fef0a15cd5fd',1,'Snake']]],
+  ['fillpalette',['fillPalette',['../gba_graphics_8h.html#a18c50bc640382ac17dd2ca3010e48402',1,'gbaGraphics.c']]],
+  ['fillscreen3',['fillScreen3',['../gba_graphics_8h.html#a105be5d22c53ca082e6b58fce69a03bf',1,'gbaGraphics.c']]],
+  ['fillscreen4',['fillScreen4',['../gba_graphics_8h.html#ae445616cda5fb247f419e1268c1eb6eb',1,'gbaGraphics.c']]],
+  ['flippage',['flipPage',['../gba_graphics_8h.html#af4d9bf7ae9ffc50d2bb0d52ea5d92588',1,'gbaGraphics.c']]],
+  ['fontdata_5f6x8',['fontdata_6x8',['../gba_graphics_8h.html#a1d69a42dc664cc3b4e155f1a2e21d0f4',1,'font.c']]],
+  ['food',['Food',['../struct_food.html',1,'']]],
+  ['food_5fcolor',['FOOD_COLOR',['../cnake_settings_8h.html#a397152d3f4b23cdfca1767996b6ff806',1,'cnakeSettings.h']]],
+  ['food_5fduration',['FOOD_DURATION',['../cnake_settings_8h.html#a20aa0533fdc8bb4466251568349ad322',1,'cnakeSettings.h']]],
+  ['food_5fgeneration_5fprobability_5fone_5fin',['FOOD_GENERATION_PROBABILITY_ONE_IN',['../cnake_settings_8h.html#ab219f7f1caef7cfac2ee07c39ab68321',1,'cnakeSettings.h']]],
+  ['food_5flength_5fincrement',['FOOD_LENGTH_INCREMENT',['../cnake_settings_8h.html#acf0c397a3aad73a4b14f2b56a059f13d',1,'cnakeSettings.h']]],
+  ['foodcount',['FOODCOUNT',['../cnake_settings_8h.html#a4d88600cd0550d54d6129336cc9dffea',1,'cnakeSettings.h']]],
+  ['foods',['foods',['../struct_game.html#aab913a1e81d59801882afbd45fa496d1',1,'Game']]],
+  ['freefood',['freeFood',['../cnake_logic_8h.html#af4ce39358361aff4f0a68ebb141aa6ce',1,'cnakeLogic.c']]],
+  ['freegame',['freeGame',['../cnake_logic_8h.html#a0266a4495d02883222c3d0b9a50edb25',1,'cnakeLogic.c']]],
+  ['freesnake',['freeSnake',['../cnake_logic_8h.html#ab3e51997d011c1542ffe7c65955781cd',1,'cnakeLogic.c']]],
+  ['freeturn',['freeTurn',['../cnake_logic_8h.html#a64f8a3f562bdd7466b5513a8113b5d7e',1,'cnakeLogic.c']]]
 ];

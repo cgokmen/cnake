@@ -64,6 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -88,19 +89,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Food Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="cnake_logic_8h_source.html">cnakeLogic.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a89408ee02ab1ebdda1bb89dbfd56f7a1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89408ee02ab1ebdda1bb89dbfd56f7a1"></a>
-<a class="el" href="struct_point.html">Point</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>location</b></td></tr>
+<tr class="memitem:a89408ee02ab1ebdda1bb89dbfd56f7a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_point.html">Point</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_food.html#a89408ee02ab1ebdda1bb89dbfd56f7a1">location</a></td></tr>
 <tr class="separator:a89408ee02ab1ebdda1bb89dbfd56f7a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6748ed675c840e1a6b6db19cc5b0a606"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6748ed675c840e1a6b6db19cc5b0a606"></a>
-u32&#160;</td><td class="memItemRight" valign="bottom"><b>deleteOnCycle</b></td></tr>
+<tr class="memitem:a6748ed675c840e1a6b6db19cc5b0a606"><td class="memItemLeft" align="right" valign="top"><a class="el" href="my_lib_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_food.html#a6748ed675c840e1a6b6db19cc5b0a606">deleteOnCycle</a></td></tr>
 <tr class="separator:a6748ed675c840e1a6b6db19cc5b0a606"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66236e78407f7f7560eb9ece512621c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66236e78407f7f7560eb9ece512621c7"></a>
-u16&#160;</td><td class="memItemRight" valign="bottom"><b>value</b></td></tr>
+<tr class="memitem:a66236e78407f7f7560eb9ece512621c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="my_lib_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_food.html#a66236e78407f7f7560eb9ece512621c7">value</a></td></tr>
 <tr class="separator:a66236e78407f7f7560eb9ece512621c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="struct_food.html">Food</a> struct is used for keeping track of the foods on the map. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="a6748ed675c840e1a6b6db19cc5b0a606"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="my_lib_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> deleteOnCycle</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>What game cycle the food must be deleted on (essentially expiry date) </p>
+
+</div>
+</div>
+<a class="anchor" id="a89408ee02ab1ebdda1bb89dbfd56f7a1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_point.html">Point</a>* location</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The location of the food on the board </p>
+
+</div>
+</div>
+<a class="anchor" id="a66236e78407f7f7560eb9ece512621c7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="my_lib_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a> value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>How much the snake will grow after eating this food </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="cnake_logic_8h_source.html">cnakeLogic.h</a></li>
 </ul>

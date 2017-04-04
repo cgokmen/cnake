@@ -64,6 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -88,16 +89,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Turn Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="cnake_logic_8h_source.html">cnakeLogic.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a89408ee02ab1ebdda1bb89dbfd56f7a1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89408ee02ab1ebdda1bb89dbfd56f7a1"></a>
-<a class="el" href="struct_point.html">Point</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>location</b></td></tr>
+<tr class="memitem:a89408ee02ab1ebdda1bb89dbfd56f7a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_point.html">Point</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_turn.html#a89408ee02ab1ebdda1bb89dbfd56f7a1">location</a></td></tr>
 <tr class="separator:a89408ee02ab1ebdda1bb89dbfd56f7a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9ae111db1693576cbeba6b699d8d1d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9ae111db1693576cbeba6b699d8d1d2"></a>
-Direction&#160;</td><td class="memItemRight" valign="bottom"><b>previouslyFacing</b></td></tr>
+<tr class="memitem:ae9ae111db1693576cbeba6b699d8d1d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cnake_logic_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_turn.html#ae9ae111db1693576cbeba6b699d8d1d2">previouslyFacing</a></td></tr>
 <tr class="separator:ae9ae111db1693576cbeba6b699d8d1d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="struct_turn.html">Turn</a> struct is used for keeping track of the turns the snake makes. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="a89408ee02ab1ebdda1bb89dbfd56f7a1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_point.html">Point</a>* location</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The location of the turn </p>
+
+</div>
+</div>
+<a class="anchor" id="ae9ae111db1693576cbeba6b699d8d1d2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="cnake_logic_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a> previouslyFacing</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The direction the snake was facing before turning </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="cnake_logic_8h_source.html">cnakeLogic.h</a></li>
 </ul>

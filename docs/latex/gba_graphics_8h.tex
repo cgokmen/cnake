@@ -1,0 +1,693 @@
+\hypertarget{gba_graphics_8h}{}\section{src/gba\+Graphics.h File Reference}
+\label{gba_graphics_8h}\index{src/gba\+Graphics.\+h@{src/gba\+Graphics.\+h}}
+
+
+This file contains G\+BA graphics functions.  
+
+
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_d_m_a___c_o_n_t_r_o_l_l_e_r}{D\+M\+A\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+ER}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries R\+E\+G\+\_\+\+D\+I\+S\+P\+C\+NT}~$\ast$(\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$)0x4000000\hypertarget{gba_graphics_8h_a9a5b1a8377f77fcfde2069c040bcdfdf}{}\label{gba_graphics_8h_a9a5b1a8377f77fcfde2069c040bcdfdf}
+
+\item 
+\#define {\bfseries M\+O\+D\+E\+\_\+3}~3\hypertarget{gba_graphics_8h_aeb99b4257cb3cd9fb539529a1bd2d9ca}{}\label{gba_graphics_8h_aeb99b4257cb3cd9fb539529a1bd2d9ca}
+
+\item 
+\#define {\bfseries M\+O\+D\+E\+\_\+4}~4\hypertarget{gba_graphics_8h_a8b3b716ea0f4eba28a190998b096c063}{}\label{gba_graphics_8h_a8b3b716ea0f4eba28a190998b096c063}
+
+\item 
+\#define {\bfseries B\+G2\+\_\+\+EN}~(1 $<$$<$ 10)\hypertarget{gba_graphics_8h_afd4379a0896d64e24705f566598380a7}{}\label{gba_graphics_8h_afd4379a0896d64e24705f566598380a7}
+
+\item 
+\#define {\bfseries O\+F\+F\+S\+ET}(r,  c,  rowlen)~((c) + (r)$\ast$(rowlen))\hypertarget{gba_graphics_8h_a3669741899ae8dbbf1a96686b8076c72}{}\label{gba_graphics_8h_a3669741899ae8dbbf1a96686b8076c72}
+
+\item 
+\#define {\bfseries C\+O\+L\+OR}(r,  g,  b)~((r) $\vert$ (g)$<$$<$5 $\vert$ (b)$<$$<$10)\hypertarget{gba_graphics_8h_ac2d0d0b82cb5b5535d61c3d1177726a8}{}\label{gba_graphics_8h_ac2d0d0b82cb5b5535d61c3d1177726a8}
+
+\item 
+\#define {\bfseries W\+H\+I\+TE}~C\+O\+L\+OR(31,31,31)\hypertarget{gba_graphics_8h_a87b537f5fa5c109d3c05c13d6b18f382}{}\label{gba_graphics_8h_a87b537f5fa5c109d3c05c13d6b18f382}
+
+\item 
+\#define {\bfseries R\+ED}~C\+O\+L\+OR(31,0,0)\hypertarget{gba_graphics_8h_a8d23feea868a983c8c2b661e1e16972f}{}\label{gba_graphics_8h_a8d23feea868a983c8c2b661e1e16972f}
+
+\item 
+\#define {\bfseries G\+R\+E\+EN}~C\+O\+L\+OR(0,31,0)\hypertarget{gba_graphics_8h_acfbc006ea433ad708fdee3e82996e721}{}\label{gba_graphics_8h_acfbc006ea433ad708fdee3e82996e721}
+
+\item 
+\#define {\bfseries B\+L\+UE}~C\+O\+L\+OR(0,0,31)\hypertarget{gba_graphics_8h_a79d10e672abb49ad63eeaa8aaef57c38}{}\label{gba_graphics_8h_a79d10e672abb49ad63eeaa8aaef57c38}
+
+\item 
+\#define {\bfseries M\+A\+G\+E\+N\+TA}~C\+O\+L\+OR(31, 0, 31)\hypertarget{gba_graphics_8h_a6f699060902f800f12aaae150f3a708e}{}\label{gba_graphics_8h_a6f699060902f800f12aaae150f3a708e}
+
+\item 
+\#define {\bfseries C\+Y\+AN}~C\+O\+L\+OR(0, 31, 31)\hypertarget{gba_graphics_8h_ad243f93c16bc4c1d3e0a13b84421d760}{}\label{gba_graphics_8h_ad243f93c16bc4c1d3e0a13b84421d760}
+
+\item 
+\#define {\bfseries Y\+E\+L\+L\+OW}~C\+O\+L\+OR(31, 31, 0)\hypertarget{gba_graphics_8h_abf681265909adf3d3e8116c93c0ba179}{}\label{gba_graphics_8h_abf681265909adf3d3e8116c93c0ba179}
+
+\item 
+\#define {\bfseries B\+L\+A\+CK}~0\hypertarget{gba_graphics_8h_a7b3b25cba33b07c303f3060fe41887f6}{}\label{gba_graphics_8h_a7b3b25cba33b07c303f3060fe41887f6}
+
+\item 
+\#define {\bfseries G\+R\+AY}~C\+O\+L\+OR(5, 5, 5)\hypertarget{gba_graphics_8h_ae5f70677050eecd8909e0248e07b9e73}{}\label{gba_graphics_8h_ae5f70677050eecd8909e0248e07b9e73}
+
+\item 
+\#define {\bfseries B\+U\+F\+F\+E\+R0}~((\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$) 0x06000000)\hypertarget{gba_graphics_8h_a6c49623d73fb8548f15e47a2db3cac31}{}\label{gba_graphics_8h_a6c49623d73fb8548f15e47a2db3cac31}
+
+\item 
+\#define {\bfseries B\+U\+F\+F\+E\+R1}~((\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$) 0x0600\+A000)\hypertarget{gba_graphics_8h_a742aac3fdb9824d261c69fbeeb5f1010}{}\label{gba_graphics_8h_a742aac3fdb9824d261c69fbeeb5f1010}
+
+\item 
+\#define {\bfseries P\+A\+L\+E\+T\+TE}~((\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$) 0x05000000)\hypertarget{gba_graphics_8h_a284af3b711f4d2f8d61e643b7f8b0f65}{}\label{gba_graphics_8h_a284af3b711f4d2f8d61e643b7f8b0f65}
+
+\item 
+\#define {\bfseries B\+U\+F\+F\+E\+R1\+F\+L\+AG}~0x10\hypertarget{gba_graphics_8h_a95fad30c3cdbd0c42a743e371ac82dfb}{}\label{gba_graphics_8h_a95fad30c3cdbd0c42a743e371ac82dfb}
+
+\item 
+\#define {\bfseries S\+C\+A\+N\+L\+I\+N\+E\+C\+O\+U\+N\+T\+ER}~$\ast$(volatile \hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$)0x4000006\hypertarget{gba_graphics_8h_ae9c289fe2d1a1a6c6d47e075d37a2779}{}\label{gba_graphics_8h_ae9c289fe2d1a1a6c6d47e075d37a2779}
+
+\item 
+\#define {\bfseries D\+MA}~((volatile \hyperlink{struct_d_m_a___c_o_n_t_r_o_l_l_e_r}{D\+M\+A\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+ER} $\ast$) 0x040000\+B0)\hypertarget{gba_graphics_8h_a137c9e7c0bc9e12f455df0a6e41c0287}{}\label{gba_graphics_8h_a137c9e7c0bc9e12f455df0a6e41c0287}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+0}~0\hypertarget{gba_graphics_8h_abd7de138931e93a90fc6c4eab5916bbe}{}\label{gba_graphics_8h_abd7de138931e93a90fc6c4eab5916bbe}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1}~1\hypertarget{gba_graphics_8h_a283364370e9876af6406b9fa70e2944f}{}\label{gba_graphics_8h_a283364370e9876af6406b9fa70e2944f}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2}~2\hypertarget{gba_graphics_8h_a9688f3e78cbc2109d214b7ca049e22df}{}\label{gba_graphics_8h_a9688f3e78cbc2109d214b7ca049e22df}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+3}~3\hypertarget{gba_graphics_8h_ac689673fec4d72ede49a0d657e3a7e70}{}\label{gba_graphics_8h_ac689673fec4d72ede49a0d657e3a7e70}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+D\+E\+S\+T\+I\+N\+A\+T\+I\+O\+N\+\_\+\+I\+N\+C\+R\+E\+M\+E\+NT}~(0 $<$$<$ 21)\hypertarget{gba_graphics_8h_a01cae4ac6b0cad7bd0248185539b3dd5}{}\label{gba_graphics_8h_a01cae4ac6b0cad7bd0248185539b3dd5}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+D\+E\+S\+T\+I\+N\+A\+T\+I\+O\+N\+\_\+\+D\+E\+C\+R\+E\+M\+E\+NT}~(1 $<$$<$ 21)\hypertarget{gba_graphics_8h_ac1f50f006a840a2b83364e1fbf9c295e}{}\label{gba_graphics_8h_ac1f50f006a840a2b83364e1fbf9c295e}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+D\+E\+S\+T\+I\+N\+A\+T\+I\+O\+N\+\_\+\+F\+I\+X\+ED}~(2 $<$$<$ 21)\hypertarget{gba_graphics_8h_add4b978f54eec2ea5bb962d0cd578ccb}{}\label{gba_graphics_8h_add4b978f54eec2ea5bb962d0cd578ccb}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+C\+R\+E\+M\+E\+NT}~(0 $<$$<$ 23)\hypertarget{gba_graphics_8h_a4d9087a28bb97b0d700db40ebb950d32}{}\label{gba_graphics_8h_a4d9087a28bb97b0d700db40ebb950d32}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+D\+E\+C\+R\+E\+M\+E\+NT}~(1 $<$$<$ 23)\hypertarget{gba_graphics_8h_a2c11c26c9376da38cd7893dd7b7695d0}{}\label{gba_graphics_8h_a2c11c26c9376da38cd7893dd7b7695d0}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+F\+I\+X\+ED}~(2 $<$$<$ 23)\hypertarget{gba_graphics_8h_af6a43dda1677635b0fafcc743f0a2079}{}\label{gba_graphics_8h_af6a43dda1677635b0fafcc743f0a2079}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+R\+E\+P\+E\+AT}~(1 $<$$<$ 25)\hypertarget{gba_graphics_8h_ac873984d2e102e87ca91f5a0165d8fcb}{}\label{gba_graphics_8h_ac873984d2e102e87ca91f5a0165d8fcb}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+16}~(0 $<$$<$ 26)\hypertarget{gba_graphics_8h_a0a2718e75f0c584cd290a8863736140f}{}\label{gba_graphics_8h_a0a2718e75f0c584cd290a8863736140f}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+32}~(1 $<$$<$ 26)\hypertarget{gba_graphics_8h_ae511042f847c1db93ddeac32b883f2da}{}\label{gba_graphics_8h_ae511042f847c1db93ddeac32b883f2da}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+N\+OW}~(0 $<$$<$ 28)\hypertarget{gba_graphics_8h_a92567f4d4f7643914b5ad01814b863ca}{}\label{gba_graphics_8h_a92567f4d4f7643914b5ad01814b863ca}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+A\+T\+\_\+\+V\+B\+L\+A\+NK}~(1 $<$$<$ 28)\hypertarget{gba_graphics_8h_a7596814a544fb0fc29c9c8634530f759}{}\label{gba_graphics_8h_a7596814a544fb0fc29c9c8634530f759}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+A\+T\+\_\+\+H\+B\+L\+A\+NK}~(2 $<$$<$ 28)\hypertarget{gba_graphics_8h_a53d65a11071a72c4f2639671ce017270}{}\label{gba_graphics_8h_a53d65a11071a72c4f2639671ce017270}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+A\+T\+\_\+\+R\+E\+F\+R\+E\+SH}~(3 $<$$<$ 28)\hypertarget{gba_graphics_8h_af1133c8d693c853dcfcd7c670f844eaf}{}\label{gba_graphics_8h_af1133c8d693c853dcfcd7c670f844eaf}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+I\+RQ}~(1 $<$$<$ 30)\hypertarget{gba_graphics_8h_a90bc198e19253e873886e31e189ec54f}{}\label{gba_graphics_8h_a90bc198e19253e873886e31e189ec54f}
+
+\item 
+\#define {\bfseries D\+M\+A\+\_\+\+ON}~(1 $<$$<$ 31)\hypertarget{gba_graphics_8h_afdbde9121c95a15b20c188151164c320}{}\label{gba_graphics_8h_afdbde9121c95a15b20c188151164c320}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{gba_graphics_8h_a6d82f090a119125d06d9e9ecf859ef70}{set\+Pixel3} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, \hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} color)
+\item 
+void \hyperlink{gba_graphics_8h_acfdcde3a1402899ca3617b3a37699c03}{draw\+Rect3\+D\+MA} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, int width, int height, \hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} color)
+\item 
+void \hyperlink{gba_graphics_8h_a4b75831ef06747c105c546102de2e9e3}{set\+Pixel4} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, \hyperlink{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{u8} color)
+\item 
+void \hyperlink{gba_graphics_8h_a787623a2419c19fa4ec5e7984525157a}{draw\+Rect4} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, int width, int height, \hyperlink{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{u8} color)
+\item 
+void \hyperlink{gba_graphics_8h_ae90114fce5f5c4254ab64e2600d4582b}{draw\+Rect4\+D\+MA} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, int width, int height, \hyperlink{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{u8} color)
+\item 
+void \hyperlink{gba_graphics_8h_a668204d87bdc7a2f11e1200855de4564}{draw\+Full\+Width\+Rectangle4} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int y, int height, \hyperlink{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{u8} color)
+\item 
+void \hyperlink{gba_graphics_8h_a9360673a856ece6de74a4756045a1821}{draw\+Full\+Screen\+Image3} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, \hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$image)
+\item 
+void \hyperlink{gba_graphics_8h_ad7b3d58e2b0c4dea5cbc4ca3694b5371}{draw\+Image\+Non\+Black\+Pixels4} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, \hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$image)
+\item 
+void \hyperlink{gba_graphics_8h_a105be5d22c53ca082e6b58fce69a03bf}{fill\+Screen3} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, volatile \hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} color)
+\item 
+void \hyperlink{gba_graphics_8h_ae445616cda5fb247f419e1268c1eb6eb}{fill\+Screen4} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, volatile \hyperlink{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{u8} color)
+\item 
+void \hyperlink{gba_graphics_8h_a5fc7fe55c4b09d9597df1414fdaaebef}{draw\+Image3} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, int width, int height, \hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$image)
+\item 
+void \hyperlink{gba_graphics_8h_a35d8fc8106a356447f19c4451992594a}{draw\+Image4} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, int width, int height, \hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$image)
+\item 
+void \hyperlink{gba_graphics_8h_ad8b31e273a0e3a280a20bd730532a7b6}{draw\+Char3} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, char ch, \hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} color)
+\item 
+void \hyperlink{gba_graphics_8h_a0476f266825f230d564d4b9515ce4895}{draw\+String3} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, char $\ast$str, \hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} color)
+\item 
+void \hyperlink{gba_graphics_8h_a499e46de05e611ce022ac788507101cf}{draw\+Centered\+String3} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, int width, int height, char $\ast$str, \hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} color)
+\item 
+void \hyperlink{gba_graphics_8h_ac5ddb4a8e9352665d6c296e0657131df}{draw\+Char4} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, char ch, \hyperlink{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{u8} color)
+\item 
+void \hyperlink{gba_graphics_8h_abb95b6dd1fff7c4cc2576ae7be857478}{draw\+String4} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, char $\ast$str, \hyperlink{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{u8} color)
+\item 
+void \hyperlink{gba_graphics_8h_a3cbea78dbb683924b10a5029250eaa2e}{draw\+Centered\+String4} (\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$buffer, int x, int y, int width, int height, char $\ast$str, \hyperlink{my_lib_8h_aed742c436da53c1080638ce6ef7d13de}{u8} color)
+\item 
+\hyperlink{my_lib_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16} $\ast$ \hyperlink{gba_graphics_8h_af4d9bf7ae9ffc50d2bb0d52ea5d92588}{flip\+Page} ()
+\item 
+void \hyperlink{gba_graphics_8h_a18c50bc640382ac17dd2ca3010e48402}{fill\+Palette} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned char \hyperlink{gba_graphics_8h_a1d69a42dc664cc3b4e155f1a2e21d0f4}{fontdata\+\_\+6x8} \mbox{[}12288\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains G\+BA graphics functions. 
+
+\begin{DoxyAuthor}{Author}
+Cem Gokmen 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2 Apr 2017 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+Centered\+String3@{draw\+Centered\+String3}}
+\index{draw\+Centered\+String3@{draw\+Centered\+String3}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Centered\+String3(u16 $\ast$buffer, int x, int y, int width, int height, char $\ast$str, u16 color)}{drawCenteredString3(u16 *buffer, int x, int y, int width, int height, char *str, u16 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Centered\+String3 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{char $\ast$}]{str, }
+\item[{{\bf u16}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_a499e46de05e611ce022ac788507101cf}{}\label{gba_graphics_8h_a499e46de05e611ce022ac788507101cf}
+Draws a string of characters onto the buffer in Mode 3. The string will be centered in the given bounding box.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em x} & X coordinate of bounding box \\
+\hline
+{\em y} & Y coordinate of bounding box \\
+\hline
+{\em width} & Width of bounding box \\
+\hline
+{\em height} & Height of bounding box \\
+\hline
+{\em str} & The string to draw \\
+\hline
+{\em color} & Color to draw the text in (u16 color value) \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+Centered\+String4@{draw\+Centered\+String4}}
+\index{draw\+Centered\+String4@{draw\+Centered\+String4}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Centered\+String4(u16 $\ast$buffer, int x, int y, int width, int height, char $\ast$str, u8 color)}{drawCenteredString4(u16 *buffer, int x, int y, int width, int height, char *str, u8 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Centered\+String4 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{char $\ast$}]{str, }
+\item[{{\bf u8}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_a3cbea78dbb683924b10a5029250eaa2e}{}\label{gba_graphics_8h_a3cbea78dbb683924b10a5029250eaa2e}
+Draws a string of characters onto the buffer in Mode 4. The string will be centered in the given bounding box.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em x} & X coordinate of bounding box \\
+\hline
+{\em y} & Y coordinate of bounding box \\
+\hline
+{\em width} & Width of bounding box \\
+\hline
+{\em height} & Height of bounding box \\
+\hline
+{\em str} & The string to draw \\
+\hline
+{\em color} & Color to draw the text in (u8 index of color on the palette) \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+Char3@{draw\+Char3}}
+\index{draw\+Char3@{draw\+Char3}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Char3(u16 $\ast$buffer, int x, int y, char ch, u16 color)}{drawChar3(u16 *buffer, int x, int y, char ch, u16 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Char3 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{char}]{ch, }
+\item[{{\bf u16}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_ad8b31e273a0e3a280a20bd730532a7b6}{}\label{gba_graphics_8h_ad8b31e273a0e3a280a20bd730532a7b6}
+Draws a single 6x8 character onto the buffer in Mode 3.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em x} & X coordinate of the top left corner of the character \\
+\hline
+{\em y} & Y coordinate of the top left corner of the character \\
+\hline
+{\em ch} & The A\+S\+C\+II character to draw \\
+\hline
+{\em color} & Color to draw the text in (u16 color value) \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+Char4@{draw\+Char4}}
+\index{draw\+Char4@{draw\+Char4}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Char4(u16 $\ast$buffer, int x, int y, char ch, u8 color)}{drawChar4(u16 *buffer, int x, int y, char ch, u8 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Char4 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{char}]{ch, }
+\item[{{\bf u8}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_ac5ddb4a8e9352665d6c296e0657131df}{}\label{gba_graphics_8h_ac5ddb4a8e9352665d6c296e0657131df}
+Draws a single 6x8 character onto the buffer in Mode 4.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em x} & X coordinate of the top left corner of the character \\
+\hline
+{\em y} & Y coordinate of the top left corner of the character \\
+\hline
+{\em ch} & The A\+S\+C\+II character to draw \\
+\hline
+{\em color} & Color to draw the text in (u8 index of color on the palette) \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+Full\+Screen\+Image3@{draw\+Full\+Screen\+Image3}}
+\index{draw\+Full\+Screen\+Image3@{draw\+Full\+Screen\+Image3}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Full\+Screen\+Image3(u16 $\ast$buffer, u16 $\ast$image)}{drawFullScreenImage3(u16 *buffer, u16 *image)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Full\+Screen\+Image3 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{{\bf u16} $\ast$}]{image}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_a9360673a856ece6de74a4756045a1821}{}\label{gba_graphics_8h_a9360673a856ece6de74a4756045a1821}
+Draws a full screen image in G\+BA Mode 3 using D\+MA
+
+This function benefits from the fact that full screen images are are contiguous addresses in memory. This allows for a single D\+MA execution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em image} & Pointer to the image to draw \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+Full\+Width\+Rectangle4@{draw\+Full\+Width\+Rectangle4}}
+\index{draw\+Full\+Width\+Rectangle4@{draw\+Full\+Width\+Rectangle4}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Full\+Width\+Rectangle4(u16 $\ast$buffer, int y, int height, u8 color)}{drawFullWidthRectangle4(u16 *buffer, int y, int height, u8 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Full\+Width\+Rectangle4 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{y, }
+\item[{int}]{height, }
+\item[{{\bf u8}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_a668204d87bdc7a2f11e1200855de4564}{}\label{gba_graphics_8h_a668204d87bdc7a2f11e1200855de4564}
+Draws a full-\/width rectangle in G\+BA Mode 4 using D\+MA
+
+This function benefits from the fact that rows of full-\/width rectangles are contiguous addresses in memory. This allows for a single D\+MA execution.
+
+This function relies on the fact that the width of the screen is an even number to do a more optimal calculation than normally done with set\+Pixel4.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em y} & Y coordinate of top left corner of rectangle \\
+\hline
+{\em height} & Height of rectangle \\
+\hline
+{\em color} & Color to draw the pixel in (u8 index of color on the palette) \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+Image3@{draw\+Image3}}
+\index{draw\+Image3@{draw\+Image3}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Image3(u16 $\ast$buffer, int x, int y, int width, int height, u16 $\ast$image)}{drawImage3(u16 *buffer, int x, int y, int width, int height, u16 *image)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Image3 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{{\bf u16} $\ast$}]{image}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_a5fc7fe55c4b09d9597df1414fdaaebef}{}\label{gba_graphics_8h_a5fc7fe55c4b09d9597df1414fdaaebef}
+Draws an image in G\+BA Mode 3 using D\+MA
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em x} & X coordinate of the top left corner of the image \\
+\hline
+{\em y} & Y coordinate of the top left corner of the image \\
+\hline
+{\em width} & Width of the image (the image array, scaling is not supported) \\
+\hline
+{\em height} & Height of the image (the image array, scaling is not supported) \\
+\hline
+{\em image} & Pointer to the image to draw \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+Image4@{draw\+Image4}}
+\index{draw\+Image4@{draw\+Image4}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Image4(u16 $\ast$buffer, int x, int y, int width, int height, u16 $\ast$image)}{drawImage4(u16 *buffer, int x, int y, int width, int height, u16 *image)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Image4 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{{\bf u16} $\ast$}]{image}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_a35d8fc8106a356447f19c4451992594a}{}\label{gba_graphics_8h_a35d8fc8106a356447f19c4451992594a}
+Draws an image in G\+BA Mode 4 using D\+MA.
+
+The image is drawn in Black and White (non-\/black pixels are white) in order to enhance performance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em x} & X coordinate of the top left corner of the image \\
+\hline
+{\em y} & Y coordinate of the top left corner of the image \\
+\hline
+{\em width} & Width of the image (the image array, scaling is not supported) \\
+\hline
+{\em height} & Height of the image (the image array, scaling is not supported) \\
+\hline
+{\em image} & Pointer to the image to draw \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+Image\+Non\+Black\+Pixels4@{draw\+Image\+Non\+Black\+Pixels4}}
+\index{draw\+Image\+Non\+Black\+Pixels4@{draw\+Image\+Non\+Black\+Pixels4}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Image\+Non\+Black\+Pixels4(u16 $\ast$buffer, u16 $\ast$image)}{drawImageNonBlackPixels4(u16 *buffer, u16 *image)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Image\+Non\+Black\+Pixels4 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{{\bf u16} $\ast$}]{image}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_ad7b3d58e2b0c4dea5cbc4ca3694b5371}{}\label{gba_graphics_8h_ad7b3d58e2b0c4dea5cbc4ca3694b5371}
+Draws the non-\/black pixels of an image as white pixels onto the buffer in Mode 4.
+
+This essentially means assuming black pixels to be transparent. Its specific use case is drawing the skull and bones image onto the game screen at snake death.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em image} & Pointer to the image to draw \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+Rect3\+D\+MA@{draw\+Rect3\+D\+MA}}
+\index{draw\+Rect3\+D\+MA@{draw\+Rect3\+D\+MA}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Rect3\+D\+M\+A(u16 $\ast$buffer, int x, int y, int width, int height, u16 color)}{drawRect3DMA(u16 *buffer, int x, int y, int width, int height, u16 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Rect3\+D\+MA (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{{\bf u16}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_acfdcde3a1402899ca3617b3a37699c03}{}\label{gba_graphics_8h_acfdcde3a1402899ca3617b3a37699c03}
+Draws a rectangle in G\+BA Mode 3 using D\+MA.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em x} & X coordinate of top left corner of rectangle \\
+\hline
+{\em y} & Y coordinate of top left corner of rectangle \\
+\hline
+{\em width} & Width of rectangle \\
+\hline
+{\em height} & Height of rectangle \\
+\hline
+{\em color} & Color to draw the pixel in (u16 color value) \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+Rect4@{draw\+Rect4}}
+\index{draw\+Rect4@{draw\+Rect4}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Rect4(u16 $\ast$buffer, int x, int y, int width, int height, u8 color)}{drawRect4(u16 *buffer, int x, int y, int width, int height, u8 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Rect4 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{{\bf u8}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_a787623a2419c19fa4ec5e7984525157a}{}\label{gba_graphics_8h_a787623a2419c19fa4ec5e7984525157a}
+Draws a rectangle in G\+BA Mode 4 without using D\+MA (useful for smaller rectangles)
+
+This function relies on the fact that all x coordinates and widths for our snake game are even numbers to do a more optimal calculation than normally done with set\+Pixel4. As a result it will not work with odd x coordinates and widths.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em x} & X coordinate of top left corner of rectangle \\
+\hline
+{\em y} & Y coordinate of top left corner of rectangle \\
+\hline
+{\em width} & Width of rectangle \\
+\hline
+{\em height} & Height of rectangle \\
+\hline
+{\em color} & Color to draw the pixel in (u8 index of color on the palette) \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+Rect4\+D\+MA@{draw\+Rect4\+D\+MA}}
+\index{draw\+Rect4\+D\+MA@{draw\+Rect4\+D\+MA}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+Rect4\+D\+M\+A(u16 $\ast$buffer, int x, int y, int width, int height, u8 color)}{drawRect4DMA(u16 *buffer, int x, int y, int width, int height, u8 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Rect4\+D\+MA (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{{\bf u8}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_ae90114fce5f5c4254ab64e2600d4582b}{}\label{gba_graphics_8h_ae90114fce5f5c4254ab64e2600d4582b}
+Draws a rectangle in G\+BA Mode 4 using D\+MA (useful for larger rectangles)
+
+This function relies on the fact that all x coordinates and widths for our snake game are even numbers to do a more optimal calculation than normally done with set\+Pixel4. As a result it will not work with odd x coordinates and widths.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em x} & X coordinate of top left corner of rectangle \\
+\hline
+{\em y} & Y coordinate of top left corner of rectangle \\
+\hline
+{\em width} & Width of rectangle \\
+\hline
+{\em height} & Height of rectangle \\
+\hline
+{\em color} & Color to draw the pixel in (u8 index of color on the palette) \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+String3@{draw\+String3}}
+\index{draw\+String3@{draw\+String3}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+String3(u16 $\ast$buffer, int x, int y, char $\ast$str, u16 color)}{drawString3(u16 *buffer, int x, int y, char *str, u16 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+String3 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{char $\ast$}]{str, }
+\item[{{\bf u16}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_a0476f266825f230d564d4b9515ce4895}{}\label{gba_graphics_8h_a0476f266825f230d564d4b9515ce4895}
+Draws a string of characters onto the buffer in Mode 3.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em x} & X coordinate of the top left corner of the string \\
+\hline
+{\em y} & Y coordinate of the top left corner of the string \\
+\hline
+{\em str} & The string to draw \\
+\hline
+{\em color} & Color to draw the text in (u16 color value) \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!draw\+String4@{draw\+String4}}
+\index{draw\+String4@{draw\+String4}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{draw\+String4(u16 $\ast$buffer, int x, int y, char $\ast$str, u8 color)}{drawString4(u16 *buffer, int x, int y, char *str, u8 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+String4 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{char $\ast$}]{str, }
+\item[{{\bf u8}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_abb95b6dd1fff7c4cc2576ae7be857478}{}\label{gba_graphics_8h_abb95b6dd1fff7c4cc2576ae7be857478}
+Draws a string of characters onto the buffer in Mode 4.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em x} & X coordinate of the top left corner of the string \\
+\hline
+{\em y} & Y coordinate of the top left corner of the string \\
+\hline
+{\em str} & The string to draw \\
+\hline
+{\em color} & Color to draw the text in (u8 index of color on the palette) \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!fill\+Palette@{fill\+Palette}}
+\index{fill\+Palette@{fill\+Palette}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{fill\+Palette()}{fillPalette()}}]{\setlength{\rightskip}{0pt plus 5cm}void fill\+Palette (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_a18c50bc640382ac17dd2ca3010e48402}{}\label{gba_graphics_8h_a18c50bc640382ac17dd2ca3010e48402}
+Fills the color palette with the colors we need to draw. \index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!fill\+Screen3@{fill\+Screen3}}
+\index{fill\+Screen3@{fill\+Screen3}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{fill\+Screen3(u16 $\ast$buffer, volatile u16 color)}{fillScreen3(u16 *buffer, volatile u16 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void fill\+Screen3 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{volatile {\bf u16}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_a105be5d22c53ca082e6b58fce69a03bf}{}\label{gba_graphics_8h_a105be5d22c53ca082e6b58fce69a03bf}
+Paints the entire buffer in G\+BA Mode 3 using D\+MA
+
+This function benefits from the fact that the entire buffer consists of contiguous addresses in memory. This allows for a single D\+MA execution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em color} & The color to paint the buffer in. \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!fill\+Screen4@{fill\+Screen4}}
+\index{fill\+Screen4@{fill\+Screen4}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{fill\+Screen4(u16 $\ast$buffer, volatile u8 color)}{fillScreen4(u16 *buffer, volatile u8 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void fill\+Screen4 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{volatile {\bf u8}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_ae445616cda5fb247f419e1268c1eb6eb}{}\label{gba_graphics_8h_ae445616cda5fb247f419e1268c1eb6eb}
+Paints the entire buffer in G\+BA Mode 3 using D\+MA
+
+This function benefits from the fact that the entire buffer consists of contiguous addresses in memory. This allows for a single D\+MA execution.
+
+This function relies on the fact that the width of the screen is an even number to do a more optimal calculation than normally done with set\+Pixel4.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em color} & The color to paint the buffer in. \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!flip\+Page@{flip\+Page}}
+\index{flip\+Page@{flip\+Page}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{flip\+Page()}{flipPage()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u16}$\ast$ flip\+Page (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_af4d9bf7ae9ffc50d2bb0d52ea5d92588}{}\label{gba_graphics_8h_af4d9bf7ae9ffc50d2bb0d52ea5d92588}
+Changes the current video buffer and returns the address of the unused buffer.
+
+\begin{DoxyReturn}{Returns}
+The address of the unused buffer for future drawing needs. 
+\end{DoxyReturn}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!set\+Pixel3@{set\+Pixel3}}
+\index{set\+Pixel3@{set\+Pixel3}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{set\+Pixel3(u16 $\ast$buffer, int x, int y, u16 color)}{setPixel3(u16 *buffer, int x, int y, u16 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Pixel3 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{{\bf u16}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_a6d82f090a119125d06d9e9ecf859ef70}{}\label{gba_graphics_8h_a6d82f090a119125d06d9e9ecf859ef70}
+Draws a single pixel in G\+BA Mode 3. 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em x} & X coordinate of pixel to draw (0 is left) \\
+\hline
+{\em y} & Y coordinate of pixel to draw (0 is top) \\
+\hline
+{\em color} & Color to draw the pixel in (u16 color value) \\
+\hline
+\end{DoxyParams}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!set\+Pixel4@{set\+Pixel4}}
+\index{set\+Pixel4@{set\+Pixel4}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{set\+Pixel4(u16 $\ast$buffer, int x, int y, u8 color)}{setPixel4(u16 *buffer, int x, int y, u8 color)}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Pixel4 (
+\begin{DoxyParamCaption}
+\item[{{\bf u16} $\ast$}]{buffer, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{{\bf u8}}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{gba_graphics_8h_a4b75831ef06747c105c546102de2e9e3}{}\label{gba_graphics_8h_a4b75831ef06747c105c546102de2e9e3}
+Draws a single pixel in G\+BA Mode 4.
+
+Note that because of the lack of single-\/byte edit capability on the V\+R\+AM hardware, this function ends up having to read two-\/pixel bundles and edit half of it. If you are setting an even number of pixels to a single color, this is not the optimal solution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the video buffer to draw onto \\
+\hline
+{\em x} & X coordinate of pixel to draw (0 is left) \\
+\hline
+{\em y} & Y coordinate of pixel to draw (0 is top) \\
+\hline
+{\em color} & Color to draw the pixel in (u8 index of color on the palette) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\index{gba\+Graphics.\+h@{gba\+Graphics.\+h}!fontdata\+\_\+6x8@{fontdata\+\_\+6x8}}
+\index{fontdata\+\_\+6x8@{fontdata\+\_\+6x8}!gba\+Graphics.\+h@{gba\+Graphics.\+h}}
+\subsubsection[{\texorpdfstring{fontdata\+\_\+6x8}{fontdata_6x8}}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned char fontdata\+\_\+6x8\mbox{[}12288\mbox{]}}\hypertarget{gba_graphics_8h_a1d69a42dc664cc3b4e155f1a2e21d0f4}{}\label{gba_graphics_8h_a1d69a42dc664cc3b4e155f1a2e21d0f4}
+Contains the pixels of each character from a 6x8 font 

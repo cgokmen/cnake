@@ -1,0 +1,370 @@
+\hypertarget{cnake_logic_8h}{}\section{src/cnake\+Logic.h File Reference}
+\label{cnake_logic_8h}\index{src/cnake\+Logic.\+h@{src/cnake\+Logic.\+h}}
+
+
+This file contains the cnake logic functions.  
+
+
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_point}{Point}
+\item 
+struct \hyperlink{struct_turn}{Turn}
+\item 
+struct \hyperlink{struct_snake}{Snake}
+\item 
+struct \hyperlink{struct_food}{Food}
+\item 
+struct \hyperlink{struct_game}{Game}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{cnake_logic_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} \{ {\bfseries UP}, 
+{\bfseries D\+O\+WN}, 
+{\bfseries L\+E\+FT}, 
+{\bfseries R\+I\+G\+HT}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_game}{Game} $\ast$ \hyperlink{cnake_logic_8h_a629d3eb48de7cf73518a8f3af68b67ce}{create\+Game} ()
+\item 
+void \hyperlink{cnake_logic_8h_a0266a4495d02883222c3d0b9a50edb25}{free\+Game} (\hyperlink{struct_game}{Game} $\ast$g)
+\item 
+void \hyperlink{cnake_logic_8h_a4ecf3996ecd5845c3bf9753be45630a3}{process\+Game} (\hyperlink{struct_game}{Game} $\ast$g, \hyperlink{my_lib_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32} keys\+Pressed)
+\item 
+void \hyperlink{cnake_logic_8h_ad8d8d51afc8c14e44d567ff3ddb9a4e4}{toggle\+Pause} (\hyperlink{struct_game}{Game} $\ast$g)
+\item 
+\hyperlink{struct_snake}{Snake} $\ast$ \hyperlink{cnake_logic_8h_a12e86a18ca545bec2e8289321b9fd40f}{create\+Snake} ()
+\item 
+void \hyperlink{cnake_logic_8h_ab3e51997d011c1542ffe7c65955781cd}{free\+Snake} (\hyperlink{struct_snake}{Snake} $\ast$s)
+\item 
+void \hyperlink{cnake_logic_8h_a2bf3b0be00fcb49d23104cfb87351278}{turn\+Snake} (\hyperlink{struct_snake}{Snake} $\ast$s, \hyperlink{cnake_logic_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} facing)
+\item 
+void \hyperlink{cnake_logic_8h_a64f8a3f562bdd7466b5513a8113b5d7e}{free\+Turn} (\hyperlink{struct_turn}{Turn} $\ast$t)
+\item 
+int \hyperlink{cnake_logic_8h_aeccda49305f3158800408835a0ea6191}{check\+Self\+Collision} (\hyperlink{struct_snake}{Snake} $\ast$s)
+\item 
+int \hyperlink{cnake_logic_8h_a4eca8a85f0e2a44501d31a8a4e1e3d8b}{check\+Wall\+Collision} (\hyperlink{struct_snake}{Snake} $\ast$s)
+\item 
+\hyperlink{struct_food}{Food} $\ast$ \hyperlink{cnake_logic_8h_aa5ac02797de45f0e48e78325f4d4ed7e}{create\+Random\+Food} (\hyperlink{struct_game}{Game} $\ast$g)
+\item 
+void \hyperlink{cnake_logic_8h_af4ce39358361aff4f0a68ebb141aa6ce}{free\+Food} (\hyperlink{struct_food}{Food} $\ast$f)
+\item 
+int \hyperlink{cnake_logic_8h_a4d30158a52b86f92d7d04f7a1e4daa5b}{check\+Food\+Collision} (\hyperlink{struct_snake}{Snake} $\ast$s, \hyperlink{struct_food}{Food} $\ast$f)
+\item 
+void \hyperlink{cnake_logic_8h_a7af315ced7efda6a16dff2a17f079936}{eat\+Food} (\hyperlink{struct_food}{Food} $\ast$f, \hyperlink{struct_game}{Game} $\ast$g)
+\item 
+int \hyperlink{cnake_logic_8h_acfda4797979f5c6f876cc522f35f68c8}{is\+Between} (\hyperlink{struct_point}{Point} $\ast$point, \hyperlink{struct_point}{Point} $\ast$p1, \hyperlink{struct_point}{Point} $\ast$p2)
+\item 
+int \hyperlink{cnake_logic_8h_a368080a7cba3816c493d2a4f3c4d9c18}{dist\+Between} (\hyperlink{struct_point}{Point} $\ast$p1, \hyperlink{struct_point}{Point} $\ast$p2)
+\item 
+\hyperlink{cnake_logic_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} \hyperlink{cnake_logic_8h_a861fe6103720e192ae9e42e3b32907b0}{get\+Opposite} (\hyperlink{cnake_logic_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} d)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains the cnake logic functions. 
+
+\begin{DoxyAuthor}{Author}
+Cem Gokmen 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2 Apr 2017 
+\end{DoxyDate}
+
+
+\subsection{Enumeration Type Documentation}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!Direction@{Direction}}
+\index{Direction@{Direction}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{Direction}{Direction}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Direction}}\hypertarget{cnake_logic_8h_a224b9163917ac32fc95a60d8c1eec3aa}{}\label{cnake_logic_8h_a224b9163917ac32fc95a60d8c1eec3aa}
+The Direction enum is used for keeping track of the direction the snake is travelling. 
+
+\subsection{Function Documentation}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!check\+Food\+Collision@{check\+Food\+Collision}}
+\index{check\+Food\+Collision@{check\+Food\+Collision}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{check\+Food\+Collision(\+Snake $\ast$s, Food $\ast$f)}{checkFoodCollision(Snake *s, Food *f)}}]{\setlength{\rightskip}{0pt plus 5cm}int check\+Food\+Collision (
+\begin{DoxyParamCaption}
+\item[{{\bf Snake} $\ast$}]{s, }
+\item[{{\bf Food} $\ast$}]{f}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_a4d30158a52b86f92d7d04f7a1e4daa5b}{}\label{cnake_logic_8h_a4d30158a52b86f92d7d04f7a1e4daa5b}
+Checks if the snake is colliding with a given food.
+
+For the sake of performance this only checks if the food is between the snake\textquotesingle{}s head and its last turn.
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Pointer to the snake to check for collisions. \\
+\hline
+{\em f} & Pointer to the food to check if the snake is colliding with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if collision exists, 0 otherwise. 
+\end{DoxyReturn}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!check\+Self\+Collision@{check\+Self\+Collision}}
+\index{check\+Self\+Collision@{check\+Self\+Collision}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{check\+Self\+Collision(\+Snake $\ast$s)}{checkSelfCollision(Snake *s)}}]{\setlength{\rightskip}{0pt plus 5cm}int check\+Self\+Collision (
+\begin{DoxyParamCaption}
+\item[{{\bf Snake} $\ast$}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_aeccda49305f3158800408835a0ea6191}{}\label{cnake_logic_8h_aeccda49305f3158800408835a0ea6191}
+Checks if the snake is colliding with itself.
+
+For the sake of performance this only checks if the part between the snake\textquotesingle{}s head and its last turn crosses any other part of the snake.
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Pointer to the snake to check for self collisions. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if collision exists, 0 otherwise. 
+\end{DoxyReturn}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!check\+Wall\+Collision@{check\+Wall\+Collision}}
+\index{check\+Wall\+Collision@{check\+Wall\+Collision}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{check\+Wall\+Collision(\+Snake $\ast$s)}{checkWallCollision(Snake *s)}}]{\setlength{\rightskip}{0pt plus 5cm}int check\+Wall\+Collision (
+\begin{DoxyParamCaption}
+\item[{{\bf Snake} $\ast$}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_a4eca8a85f0e2a44501d31a8a4e1e3d8b}{}\label{cnake_logic_8h_a4eca8a85f0e2a44501d31a8a4e1e3d8b}
+Checks if the snake is colliding with a wall.
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Pointer to the snake to check for wall collisions. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if collision exists, 0 otherwise. 
+\end{DoxyReturn}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!create\+Game@{create\+Game}}
+\index{create\+Game@{create\+Game}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{create\+Game()}{createGame()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game}$\ast$ create\+Game (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_a629d3eb48de7cf73518a8f3af68b67ce}{}\label{cnake_logic_8h_a629d3eb48de7cf73518a8f3af68b67ce}
+Creates a functional game struct in heap memory and returns a pointer to it.
+
+\begin{DoxyReturn}{Returns}
+Pointer to the created game. 
+\end{DoxyReturn}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!create\+Random\+Food@{create\+Random\+Food}}
+\index{create\+Random\+Food@{create\+Random\+Food}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{create\+Random\+Food(\+Game $\ast$g)}{createRandomFood(Game *g)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Food}$\ast$ create\+Random\+Food (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{g}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_aa5ac02797de45f0e48e78325f4d4ed7e}{}\label{cnake_logic_8h_aa5ac02797de45f0e48e78325f4d4ed7e}
+Creates a functional food struct in heap memory and returns a pointer to it. The food will be placed at a random point on the map that is not occupied by the snake.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the game to add this food to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created food. 
+\end{DoxyReturn}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!create\+Snake@{create\+Snake}}
+\index{create\+Snake@{create\+Snake}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{create\+Snake()}{createSnake()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Snake}$\ast$ create\+Snake (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_a12e86a18ca545bec2e8289321b9fd40f}{}\label{cnake_logic_8h_a12e86a18ca545bec2e8289321b9fd40f}
+Creates a functional snake struct in heap memory and returns a pointer to it.
+
+\begin{DoxyReturn}{Returns}
+Pointer to the created snake. 
+\end{DoxyReturn}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!dist\+Between@{dist\+Between}}
+\index{dist\+Between@{dist\+Between}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{dist\+Between(\+Point $\ast$p1, Point $\ast$p2)}{distBetween(Point *p1, Point *p2)}}]{\setlength{\rightskip}{0pt plus 5cm}int dist\+Between (
+\begin{DoxyParamCaption}
+\item[{{\bf Point} $\ast$}]{p1, }
+\item[{{\bf Point} $\ast$}]{p2}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_a368080a7cba3816c493d2a4f3c4d9c18}{}\label{cnake_logic_8h_a368080a7cba3816c493d2a4f3c4d9c18}
+Gets the distance between two points.
+
+For the sake of performance this contains optimizations that cause this function to work only with two points on the same vertical or horizontal line.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & Pointer to the point to find the distance from. \\
+\hline
+{\em p2} & Pointer to the point to find the distance to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two points. 
+\end{DoxyReturn}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!eat\+Food@{eat\+Food}}
+\index{eat\+Food@{eat\+Food}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{eat\+Food(\+Food $\ast$f, Game $\ast$g)}{eatFood(Food *f, Game *g)}}]{\setlength{\rightskip}{0pt plus 5cm}void eat\+Food (
+\begin{DoxyParamCaption}
+\item[{{\bf Food} $\ast$}]{f, }
+\item[{{\bf Game} $\ast$}]{g}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_a7af315ced7efda6a16dff2a17f079936}{}\label{cnake_logic_8h_a7af315ced7efda6a16dff2a17f079936}
+Makes the snake eat a food\+: adds the length increase, the score, and marks the food for deletion.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Pointer to the food to be eaten. \\
+\hline
+{\em g} & Pointer to the game to add the benefits to. \\
+\hline
+\end{DoxyParams}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!free\+Food@{free\+Food}}
+\index{free\+Food@{free\+Food}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{free\+Food(\+Food $\ast$f)}{freeFood(Food *f)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Food (
+\begin{DoxyParamCaption}
+\item[{{\bf Food} $\ast$}]{f}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_af4ce39358361aff4f0a68ebb141aa6ce}{}\label{cnake_logic_8h_af4ce39358361aff4f0a68ebb141aa6ce}
+Frees up a food from memory including its members.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Pointer to the food to free up. \\
+\hline
+\end{DoxyParams}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!free\+Game@{free\+Game}}
+\index{free\+Game@{free\+Game}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{free\+Game(\+Game $\ast$g)}{freeGame(Game *g)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Game (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{g}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_a0266a4495d02883222c3d0b9a50edb25}{}\label{cnake_logic_8h_a0266a4495d02883222c3d0b9a50edb25}
+Frees up a game from memory including its members.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the game to free up. \\
+\hline
+\end{DoxyParams}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!free\+Snake@{free\+Snake}}
+\index{free\+Snake@{free\+Snake}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{free\+Snake(\+Snake $\ast$s)}{freeSnake(Snake *s)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Snake (
+\begin{DoxyParamCaption}
+\item[{{\bf Snake} $\ast$}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_ab3e51997d011c1542ffe7c65955781cd}{}\label{cnake_logic_8h_ab3e51997d011c1542ffe7c65955781cd}
+Frees up a snake from memory including its members.
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Pointer to the snake to free up. \\
+\hline
+\end{DoxyParams}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!free\+Turn@{free\+Turn}}
+\index{free\+Turn@{free\+Turn}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{free\+Turn(\+Turn $\ast$t)}{freeTurn(Turn *t)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Turn (
+\begin{DoxyParamCaption}
+\item[{{\bf Turn} $\ast$}]{t}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_a64f8a3f562bdd7466b5513a8113b5d7e}{}\label{cnake_logic_8h_a64f8a3f562bdd7466b5513a8113b5d7e}
+Frees up a turn from memory including its members.
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Pointer to the turn to free up. \\
+\hline
+\end{DoxyParams}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!get\+Opposite@{get\+Opposite}}
+\index{get\+Opposite@{get\+Opposite}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{get\+Opposite(\+Direction d)}{getOpposite(Direction d)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Direction} get\+Opposite (
+\begin{DoxyParamCaption}
+\item[{{\bf Direction}}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_a861fe6103720e192ae9e42e3b32907b0}{}\label{cnake_logic_8h_a861fe6103720e192ae9e42e3b32907b0}
+Given a facing direction, returns the opposite direction.
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & The direction whose opposite we want to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The opposite direction. 
+\end{DoxyReturn}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!is\+Between@{is\+Between}}
+\index{is\+Between@{is\+Between}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{is\+Between(\+Point $\ast$point, Point $\ast$p1, Point $\ast$p2)}{isBetween(Point *point, Point *p1, Point *p2)}}]{\setlength{\rightskip}{0pt plus 5cm}int is\+Between (
+\begin{DoxyParamCaption}
+\item[{{\bf Point} $\ast$}]{point, }
+\item[{{\bf Point} $\ast$}]{p1, }
+\item[{{\bf Point} $\ast$}]{p2}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_acfda4797979f5c6f876cc522f35f68c8}{}\label{cnake_logic_8h_acfda4797979f5c6f876cc522f35f68c8}
+Checks if a given point is on the line segment between two other points.
+
+For the sake of performance this contains optimizations that cause this function to work only with vertical and horizontal lines.
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & Pointer to the point we want to check if on a line segment. \\
+\hline
+{\em p1} & Pointer to one endpoint of the line segment. \\
+\hline
+{\em p2} & Pointer to other endpoint of the line segment. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the point is on the line, 0 otherwise. 
+\end{DoxyReturn}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!process\+Game@{process\+Game}}
+\index{process\+Game@{process\+Game}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{process\+Game(\+Game $\ast$g, u32 keys\+Pressed)}{processGame(Game *g, u32 keysPressed)}}]{\setlength{\rightskip}{0pt plus 5cm}void process\+Game (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{g, }
+\item[{{\bf u32}}]{keys\+Pressed}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_a4ecf3996ecd5845c3bf9753be45630a3}{}\label{cnake_logic_8h_a4ecf3996ecd5845c3bf9753be45630a3}
+Main tick loop of the game. Evaluates key presses, moves snake, runs collision checks, updates score, etc.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the game to process. \\
+\hline
+{\em keys\+Pressed} & Merged key press vector from delay time to process. \\
+\hline
+\end{DoxyParams}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!toggle\+Pause@{toggle\+Pause}}
+\index{toggle\+Pause@{toggle\+Pause}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{toggle\+Pause(\+Game $\ast$g)}{togglePause(Game *g)}}]{\setlength{\rightskip}{0pt plus 5cm}void toggle\+Pause (
+\begin{DoxyParamCaption}
+\item[{{\bf Game} $\ast$}]{g}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_ad8d8d51afc8c14e44d567ff3ddb9a4e4}{}\label{cnake_logic_8h_ad8d8d51afc8c14e44d567ff3ddb9a4e4}
+Toggles the pause state of a game.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the game to toggle the pause state of. \\
+\hline
+\end{DoxyParams}
+\index{cnake\+Logic.\+h@{cnake\+Logic.\+h}!turn\+Snake@{turn\+Snake}}
+\index{turn\+Snake@{turn\+Snake}!cnake\+Logic.\+h@{cnake\+Logic.\+h}}
+\subsubsection[{\texorpdfstring{turn\+Snake(\+Snake $\ast$s, Direction facing)}{turnSnake(Snake *s, Direction facing)}}]{\setlength{\rightskip}{0pt plus 5cm}void turn\+Snake (
+\begin{DoxyParamCaption}
+\item[{{\bf Snake} $\ast$}]{s, }
+\item[{{\bf Direction}}]{facing}
+\end{DoxyParamCaption}
+)}\hypertarget{cnake_logic_8h_a2bf3b0be00fcb49d23104cfb87351278}{}\label{cnake_logic_8h_a2bf3b0be00fcb49d23104cfb87351278}
+Turns a snake\+: adds a turn to the \hyperlink{struct_snake}{Snake}\textquotesingle{}s turns vector and updates the direction it\textquotesingle{}s facing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \mbox{[}description\mbox{]} \\
+\hline
+{\em facing} & \mbox{[}description\mbox{]} \\
+\hline
+\end{DoxyParams}
