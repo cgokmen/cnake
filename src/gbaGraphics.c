@@ -3,7 +3,7 @@
 u16 *videoBuffer = (u16 *)0x6000000;
 
 /**
- * setPixel3(u16 *buffer, int x, int y, u16 color)
+ * setPixel3
  * Draws a single pixel in GBA Mode 3.
  * @param buffer Pointer to the video buffer to draw onto
  * @param x      X coordinate of pixel to draw (0 is left)
@@ -15,7 +15,27 @@ void setPixel3(u16 *buffer, int x, int y, u16 color) {
 }
 
 /**
- * setPixel4(u16* buffer, int col, int row, u8 color)
+ * drawRect3DMA
+ * Draws a rectangle in GBA Mode 3 using DMA.
+ *
+ * @param buffer Pointer to the video buffer to draw onto
+ * @param col    X coordinate of top left corner of rectangle
+ * @param row    Y coordinate of top left corner of rectangle
+ * @param width  Width of rectangle
+ * @param height Height of rectangle
+ * @param color  Color to draw the pixel in (u16 color value)
+ */
+void drawRect3DMA(u16 *buffer, int col, int row, int width, int height, volatile u16 color) {
+    for(int r = 0; r<height; r++) {
+		DMA[3].cnt = 0;
+		DMA[3].src = &color;
+		DMA[3].dst = buffer + OFFSET(row+r, col, 240);
+		DMA[3].cnt = width | DMA_SOURCE_FIXED | DMA_ON;
+	}
+}
+
+/**
+ * setPixel4
  * Draws a single pixel in GBA Mode 4.
  *
  * Note that because of the lack of single-byte edit capability
@@ -46,7 +66,7 @@ void setPixel4(u16* buffer, int col, int row, u8 color) {
 }
 
 /**
- * drawRect4(u16 *buffer, int col, int row, int width, int height, volatile u8 color)
+ * drawRect4
  * Draws a rectangle in GBA Mode 4 without using DMA (useful for smaller rectangles)
  *
  * This function relies on the fact that all x coordinates and widths for our
@@ -70,7 +90,7 @@ void drawRect4(u16 *buffer, int col, int row, int width, int height, volatile u8
 }
 
 /**
- * drawRect4DMA(u16 *buffer, int col, int row, int width, int height, volatile u8 color)
+ * drawRect4DMA
  * Draws a rectangle in GBA Mode 4 using DMA (useful for larger rectangles)
  *
  * This function relies on the fact that all x coordinates and widths for our
@@ -95,7 +115,7 @@ void drawRect4DMA(u16 *buffer, int col, int row, int width, int height, volatile
 }
 
 /**
- * drawFullWidthRectangle4(u16 *buffer, int row, int height, u8 color)
+ * drawFullWidthRectangle4
  * Draws a full-width rectangle in GBA Mode 4 using DMA
  *
  * This function benefits from the fact that rows of full-width rectangles
@@ -118,7 +138,7 @@ void drawFullWidthRectangle4(u16 *buffer, int row, int height, u8 color) {
 }
 
 /**
- * drawFullScreenImage3(u16 *buffer, u16 *image)
+ * drawFullScreenImage3
  * Draws a full screen image in GBA Mode 3 using DMA
  *
  * This function benefits from the fact that full screen images are
@@ -135,7 +155,7 @@ void drawFullScreenImage3(u16 *buffer, u16 *image) {
 }
 
 /**
- * drawImageNonBlackPixels4(u16 *buffer, u16 *image)
+ * drawImageNonBlackPixels4
  * Draws the non-black pixels of an image as white pixels onto the buffer in Mode 4.
  *
  * This essentially means assuming black pixels to be transparent. Its specific
@@ -156,7 +176,7 @@ void drawImageNonBlackPixels4(u16 *buffer, u16 *image) {
 }
 
 /**
- * fillScreen3(u16 *buffer, volatile u16 color)
+ * fillScreen3
  * Paints the entire buffer in GBA Mode 3 using DMA
  *
  * This function benefits from the fact that the entire buffer consists of
@@ -173,7 +193,7 @@ void fillScreen3(u16 *buffer, volatile u16 color) {
 }
 
 /**
- * fillScreen4(u16 *buffer, volatile u8 color)
+ * fillScreen4
  * Paints the entire buffer in GBA Mode 3 using DMA
  *
  * This function benefits from the fact that the entire buffer consists of
@@ -194,33 +214,59 @@ void fillScreen4(u16 *buffer, volatile u8 color) {
 }
 
 /**
- * drawImage3(u16 *buffer, int row, int col, int width, int height, u16 *image)
+ * drawImage3
  * Draws an image in GBA Mode 3 using DMA
  *
  * @param buffer Pointer to the video buffer to draw onto
- * @param row    X coordinate of the top left corner of the image
- * @param col    Y coordinate of the top left corner of the image
+ * @param col    X coordinate of the top left corner of the image
+ * @param row    Y coordinate of the top left corner of the image
  * @param width  Width of the image (the image array, scaling is not supported)
  * @param height Height of the image (the image array, scaling is not supported)
  * @param image  Pointer to the image to draw
  */
-void drawImage3(u16 *buffer, int row, int col, int width, int height, u16 *image) {
+void drawImage3(u16 *buffer, int col, int row, int width, int height, u16 *image) {
     for(int r = 0; r<height; r++) {
-		DMA[3].src = image + OFFSET(row+r, col, width);
+		DMA[3].src = image + OFFSET(r, 0, width);
 		DMA[3].dst = buffer + OFFSET(row+r, col, 240);
 		DMA[3].cnt = width | DMA_SOURCE_INCREMENT | DMA_DESTINATION_INCREMENT | DMA_ON;
 	}
 }
 
 /**
- * drawChar3(u16 *buffer, int col, int row, char ch, u16 color)
- * Draws a single 6x8 character onto the buffer.
+ * drawImage4
+ * Draws an image in GBA Mode 4 using DMA.
+ *
+ * The image is drawn in Black and White (non-black pixels are white) in order
+ * to enhance performance.
+ *
+ * @param buffer Pointer to the video buffer to draw onto
+ * @param col    X coordinate of the top left corner of the image
+ * @param row    Y coordinate of the top left corner of the image
+ * @param width  Width of the image (the image array, scaling is not supported)
+ * @param height Height of the image (the image array, scaling is not supported)
+ * @param image  Pointer to the image to draw
+ */
+void drawImage4(u16 *buffer, int col, int row, int width, int height, u16 *image) {
+    for(int y = 0; y < height; y++) {
+		for(int x = 0; x < width; x++) {
+            if (image[OFFSET(y, x, 240)]) {
+                setPixel4(buffer, col+x, row+y, 6);
+            } else {
+                setPixel4(buffer, col+x, row+y, 0);
+            }
+		}
+	}
+}
+
+/**
+ * drawChar3
+ * Draws a single 6x8 character onto the buffer in Mode 3.
  *
  * @param buffer Pointer to the video buffer to draw onto
  * @param col    X coordinate of the top left corner of the character
  * @param row    Y coordinate of the top left corner of the character
  * @param ch     The ASCII character to draw
- * @param color  Color to draw the pixel in (u16 color value)
+ * @param color  Color to draw the text in (u16 color value)
  */
 void drawChar3(u16 *buffer, int col, int row, char ch, u16 color) {
 	for(int r = 0; r<8; r++) {
@@ -233,14 +279,14 @@ void drawChar3(u16 *buffer, int col, int row, char ch, u16 color) {
 }
 
 /**
- * drawString3(u16 *buffer, int col, int row, char *str, u16 color)
- * Draws a string of characters onto the buffer.
+ * drawString3
+ * Draws a string of characters onto the buffer in Mode 3.
  *
  * @param buffer Pointer to the video buffer to draw onto
  * @param col    X coordinate of the top left corner of the string
  * @param row    Y coordinate of the top left corner of the string
  * @param ch     The string to draw
- * @param color  Color to draw the pixel in (u16 color value)
+ * @param color  Color to draw the text in (u16 color value)
  */
 void drawString3(u16 *buffer, int col, int row, char *str, u16 color) {
 	while(*str) {
@@ -250,14 +296,43 @@ void drawString3(u16 *buffer, int col, int row, char *str, u16 color) {
 }
 
 /**
- * drawChar4(u16 *buffer, int col, int row, char ch, u8 color)
- * Draws a single 6x8 character onto the buffer.
+ * drawCenteredString3
+ * Draws a string of characters onto the buffer in Mode 3. The string will be
+ * centered in the given bounding box.
+ *
+ * @param buffer Pointer to the video buffer to draw onto
+ * @param x      X coordinate of bounding box
+ * @param y      Y coordinate of bounding box
+ * @param width  Width of bounding box
+ * @param height Height of bounding box
+ * @param str    The string to draw
+ * @param color  Color to draw the text in (u16 color value)
+ */
+void drawCenteredString3(u16 *buffer, int x, int y, int width, int height, char *str, u16 color) {
+    u32 len = 0;
+    char *strCpy = str;
+    while (*strCpy) {
+        len++;
+        strCpy++;
+    }
+
+    u32 strWidth = 6 * len;
+    u32 strHeight = 8;
+
+    int col = x + ((width - strWidth) >> 1);
+    int row = y + ((height - strHeight) >> 1);
+    drawString3(buffer, col, row, str, color);
+}
+
+/**
+ * drawChar4
+ * Draws a single 6x8 character onto the buffer in Mode 4.
  *
  * @param buffer Pointer to the video buffer to draw onto
  * @param col    X coordinate of the top left corner of the character
  * @param row    Y coordinate of the top left corner of the character
  * @param ch     The ASCII character to draw
- * @param color  Color to draw the pixel in (u8 index of color on the palette)
+ * @param color  Color to draw the text in (u8 index of color on the palette)
  */
 void drawChar4(u16 *buffer, int col, int row, char ch, u8 color) {
 	for(int r = 0; r<8; r++) {
@@ -270,14 +345,14 @@ void drawChar4(u16 *buffer, int col, int row, char ch, u8 color) {
 }
 
 /**
- * drawString4(u16 *buffer, int col, int row, char *str, u8 color)
- * Draws a string of characters onto the buffer.
+ * drawString4
+ * Draws a string of characters onto the buffer in Mode 4.
  *
  * @param buffer Pointer to the video buffer to draw onto
  * @param col    X coordinate of the top left corner of the string
  * @param row    Y coordinate of the top left corner of the string
  * @param ch     The string to draw
- * @param color  Color to draw the pixel in (u8 index of color on the palette)
+ * @param color  Color to draw the text in (u8 index of color on the palette)
  */
 void drawString4(u16 *buffer, int col, int row, char *str, u8 color) {
 	while(*str) {
@@ -287,7 +362,36 @@ void drawString4(u16 *buffer, int col, int row, char *str, u8 color) {
 }
 
 /**
- * flipPage()
+ * drawCenteredString4
+ * Draws a string of characters onto the buffer in Mode 4. The string will be
+ * centered in the given bounding box.
+ *
+ * @param buffer Pointer to the video buffer to draw onto
+ * @param x      X coordinate of bounding box
+ * @param y      Y coordinate of bounding box
+ * @param width  Width of bounding box
+ * @param height Height of bounding box
+ * @param str    The string to draw
+ * @param color  Color to draw the text in (u8 index of color on the palette)
+ */
+void drawCenteredString4(u16 *buffer, int x, int y, int width, int height, char *str, u8 color) {
+    u32 len = 0;
+    char *strCpy = str;
+    while (*strCpy) {
+        len++;
+        strCpy++;
+    }
+
+    u32 strWidth = 6 * len;
+    u32 strHeight = 8;
+
+    int col = x + ((width - strWidth) >> 1);
+    int row = y + ((height - strHeight) >> 1);
+    drawString4(buffer, col, row, str, color);
+}
+
+/**
+ * flipPage
  * Changes the current video buffer and returns the address of the unused buffer.
  *
  * @return The address of the unused buffer for future drawing needs.
@@ -303,7 +407,7 @@ u16* flipPage() {
 }
 
 /**
- * fillPalette()
+ * fillPalette
  * Fills the color palette with the colors we need to draw.
  */
 void fillPalette() {
