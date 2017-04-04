@@ -1,0 +1,10 @@
+cnake
+----------------
+
+This is a Snake implementation for the GBA by Cem Gokmen for Georgia Tech CS2110 in Spring 2017.
+
+It uses Mode 3 for drawing static screens and mode 4 for drawing the game screen.
+
+For information about the controls, run the game and look at the information on the start screen.
+
+It's a Snake game, you'll get it.

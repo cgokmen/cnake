@@ -15,7 +15,7 @@ ARMINC = /usr/arm-none-eabi/include
 ARMLIB = /usr/arm-none-eabi/lib
 GCCLIB = /usr/lib/gcc/arm-none-eabi/$(GCC_VERSION)
 
-CFLAGS   += -Wall -std=c99 -pedantic -Wextra
+CFLAGS   += -Wall -Werror -std=c99 -pedantic -Wextra
 
 MODEL    = -mthumb-interwork -mthumb
 CFLAGS   += $(MODEL) -mlong-calls -MMD -MP -I $(ARMINC)
